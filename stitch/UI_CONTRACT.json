@@ -1,0 +1,767 @@
+[
+  {
+    "screenId": "ba560c97a33d4630aa209a99e1719cde",
+    "screenTitle": "Empty and Error Recovery - ClinicPulse Triage",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 122
+      },
+      {
+        "type": "link",
+        "label": "Triage Board",
+        "href": "#",
+        "line": 126
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 132
+      },
+      {
+        "type": "link",
+        "label": "Support",
+        "href": "#",
+        "line": 136
+      },
+      {
+        "type": "button",
+        "label": "Patient",
+        "line": 117
+      },
+      {
+        "type": "button",
+        "label": "menu",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 158
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 162
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 165
+      },
+      {
+        "type": "button",
+        "label": "Retry Load",
+        "line": 190
+      },
+      {
+        "type": "button",
+        "label": "Create Patient",
+        "line": 194
+      },
+      {
+        "type": "button",
+        "label": "Clear All Filters",
+        "line": 199
+      },
+      {
+        "type": "input",
+        "label": "Search Patients...",
+        "inputType": "text",
+        "placeholder": "Search Patients...",
+        "line": 156
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 122
+      },
+      {
+        "type": "link",
+        "label": "Triage Board",
+        "href": "#",
+        "line": 126
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 132
+      },
+      {
+        "type": "link",
+        "label": "Support",
+        "href": "#",
+        "line": 136
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Patient",
+        "line": 117
+      },
+      {
+        "type": "button",
+        "label": "menu",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 158
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 162
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 165
+      },
+      {
+        "type": "button",
+        "label": "Retry Load",
+        "line": 190
+      },
+      {
+        "type": "button",
+        "label": "Create Patient",
+        "line": 194
+      },
+      {
+        "type": "button",
+        "label": "Clear All Filters",
+        "line": 199
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search Patients...",
+        "inputType": "text",
+        "placeholder": "Search Patients...",
+        "line": 156
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 13,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "5a395a3ed8574b94bd9190449e9603b5",
+    "screenTitle": "Patient Editor - ClinicPulse Triage",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 125
+      },
+      {
+        "type": "link",
+        "label": "Triage Board",
+        "href": "#",
+        "line": 131
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 144
+      },
+      {
+        "type": "link",
+        "label": "Support",
+        "href": "#",
+        "line": 150
+      },
+      {
+        "type": "button",
+        "label": "Patient",
+        "line": 138
+      },
+      {
+        "type": "button",
+        "label": "menu",
+        "line": 163
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 171
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 174
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 177
+      },
+      {
+        "type": "button",
+        "label": "Save Now",
+        "line": 188
+      },
+      {
+        "type": "button",
+        "label": "Cancel Edit",
+        "line": 293
+      },
+      {
+        "type": "button",
+        "label": "Record",
+        "line": 296
+      },
+      {
+        "type": "input",
+        "label": "e.g. Jane Doe",
+        "inputType": "text",
+        "placeholder": "e.g. Jane Doe",
+        "line": 210
+      },
+      {
+        "type": "input",
+        "label": "date",
+        "inputType": "date",
+        "line": 225
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 240
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 246
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 252
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 258
+      },
+      {
+        "type": "input",
+        "label": "Describe the primary reason for visit...",
+        "inputType": "textarea",
+        "placeholder": "Describe the primary reason for visit...",
+        "line": 270
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 283
+      },
+      {
+        "type": "form",
+        "label": "form",
+        "line": 199
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 125
+      },
+      {
+        "type": "link",
+        "label": "Triage Board",
+        "href": "#",
+        "line": 131
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 144
+      },
+      {
+        "type": "link",
+        "label": "Support",
+        "href": "#",
+        "line": 150
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Patient",
+        "line": 138
+      },
+      {
+        "type": "button",
+        "label": "menu",
+        "line": 163
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 171
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 174
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 177
+      },
+      {
+        "type": "button",
+        "label": "Save Now",
+        "line": 188
+      },
+      {
+        "type": "button",
+        "label": "Cancel Edit",
+        "line": 293
+      },
+      {
+        "type": "button",
+        "label": "Record",
+        "line": 296
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "e.g. Jane Doe",
+        "inputType": "text",
+        "placeholder": "e.g. Jane Doe",
+        "line": 210
+      },
+      {
+        "type": "input",
+        "label": "date",
+        "inputType": "date",
+        "line": 225
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 240
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 246
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 252
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 258
+      },
+      {
+        "type": "input",
+        "label": "Describe the primary reason for visit...",
+        "inputType": "textarea",
+        "placeholder": "Describe the primary reason for visit...",
+        "line": 270
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 283
+      }
+    ],
+    "hardcodedData": [
+      "Jane Doe"
+    ],
+    "totalInteractive": 21,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "bd7684e6d77047d0be92756ab6fc430e",
+    "screenTitle": "Triage Board - ClinicPulse Triage",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 129
+      },
+      {
+        "type": "link",
+        "label": "Triage Board",
+        "href": "#",
+        "line": 135
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 143
+      },
+      {
+        "type": "link",
+        "label": "Support",
+        "href": "#",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "Add Patient",
+        "line": 124
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 173
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 176
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 179
+      },
+      {
+        "type": "button",
+        "label": "Assign Room",
+        "line": 214
+      },
+      {
+        "type": "button",
+        "label": "edit_note",
+        "line": 215
+      },
+      {
+        "type": "button",
+        "label": "Check Labs",
+        "line": 246
+      },
+      {
+        "type": "button",
+        "label": "edit_note",
+        "line": 247
+      },
+      {
+        "type": "input",
+        "label": "Search patients...",
+        "inputType": "text",
+        "placeholder": "Search patients...",
+        "line": 169
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 129
+      },
+      {
+        "type": "link",
+        "label": "Triage Board",
+        "href": "#",
+        "line": 135
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 143
+      },
+      {
+        "type": "link",
+        "label": "Support",
+        "href": "#",
+        "line": 149
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Add Patient",
+        "line": 124
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 173
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 176
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 179
+      },
+      {
+        "type": "button",
+        "label": "Assign Room",
+        "line": 214
+      },
+      {
+        "type": "button",
+        "label": "edit_note",
+        "line": 215
+      },
+      {
+        "type": "button",
+        "label": "Check Labs",
+        "line": 246
+      },
+      {
+        "type": "button",
+        "label": "edit_note",
+        "line": 247
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search patients...",
+        "inputType": "text",
+        "placeholder": "Search patients...",
+        "line": 169
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 13,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "fda159b721674f30b56ba6bab4e6c183",
+    "screenTitle": "Patient Operations - ClinicPulse Triage",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 145
+      },
+      {
+        "type": "link",
+        "label": "Triage Board",
+        "href": "#",
+        "line": 150
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 157
+      },
+      {
+        "type": "link",
+        "label": "Support",
+        "href": "#",
+        "line": 161
+      },
+      {
+        "type": "button",
+        "label": "Patient",
+        "line": 137
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 180
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 183
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 186
+      },
+      {
+        "type": "button",
+        "label": "Retry Load",
+        "line": 244
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 352
+      },
+      {
+        "type": "button",
+        "label": "View Full Record",
+        "line": 417
+      },
+      {
+        "type": "button",
+        "label": "Assign Room",
+        "line": 420
+      },
+      {
+        "type": "input",
+        "label": "Search patients, IDs...",
+        "inputType": "text",
+        "placeholder": "Search patients, IDs...",
+        "line": 176
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 226
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 232
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 237
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 145
+      },
+      {
+        "type": "link",
+        "label": "Triage Board",
+        "href": "#",
+        "line": 150
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 157
+      },
+      {
+        "type": "link",
+        "label": "Support",
+        "href": "#",
+        "line": 161
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Patient",
+        "line": 137
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 180
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 183
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 186
+      },
+      {
+        "type": "button",
+        "label": "Retry Load",
+        "line": 244
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 352
+      },
+      {
+        "type": "button",
+        "label": "View Full Record",
+        "line": 417
+      },
+      {
+        "type": "button",
+        "label": "Assign Room",
+        "line": 420
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search patients, IDs...",
+        "inputType": "text",
+        "placeholder": "Search patients, IDs...",
+        "line": 176
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 226
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 232
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 237
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 16,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
