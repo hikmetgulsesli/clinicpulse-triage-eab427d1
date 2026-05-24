@@ -113,46 +113,6 @@ export default function App() {
       {state.route === 'patient-editor' ? <PatientEditorClinicpulseTriage actions={editorActions} /> : null}
       {state.route === 'empty-recovery' ? <EmptyAndErrorRecoveryClinicpulseTriage actions={recoveryActions} /> : null}
       {state.route === 'triage-board' ? <TriageBoardClinicpulseTriage actions={boardActions} /> : null}
-      <section
-        aria-live="polite"
-        className="fixed bottom-4 left-4 z-40 max-w-sm rounded border border-slate-200 bg-white px-4 py-3 text-sm shadow-lg"
-      >
-        <p className="font-semibold text-slate-900">ClinicPulse state</p>
-        <p>Active: {state.activeScreen}</p>
-        <p>Patients: {state.counts.total}</p>
-        <p>Storage: {state.storageStatus}</p>
-        {state.lastError ? <p className="text-red-700">{state.lastError}</p> : null}
-      </section>
-      {state.activePanel === 'settings' ? (
-        <aside
-          aria-label="ClinicPulse settings"
-          className="fixed right-4 top-4 z-50 w-80 max-w-[calc(100vw-2rem)] rounded border border-slate-200 bg-white p-4 shadow-xl"
-        >
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <h2 className="text-base font-semibold text-slate-950">Settings</h2>
-              <p className="mt-1 text-sm text-slate-600">Offline intake recovery is active for this browser.</p>
-            </div>
-            <button
-              type="button"
-              className="rounded border border-slate-300 px-2 py-1 text-sm font-medium text-slate-700"
-              onClick={() => navigate('triage-board', 'board')}
-            >
-              Close
-            </button>
-          </div>
-          <dl className="mt-4 grid gap-2 text-sm">
-            <div className="flex justify-between gap-4">
-              <dt className="text-slate-500">Storage</dt>
-              <dd className="font-medium text-slate-900">{state.storageStatus}</dd>
-            </div>
-            <div className="flex justify-between gap-4">
-              <dt className="text-slate-500">Selected</dt>
-              <dd className="font-medium text-slate-900">{state.selectedRecord?.name ?? 'None'}</dd>
-            </div>
-          </dl>
-        </aside>
-      ) : null}
     </div>
   );
 }
