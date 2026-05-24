@@ -11,6 +11,8 @@ export const clinicPulseTriageFixture: ClinicPulsePatientRecord[] = [
     status: 'roomed',
     labsPending: 2,
     updatedAt: '2026-05-24T19:20:00.000Z',
+    consentMissing: false,
+    handoffNote: 'Roomed in Trauma 2 with ECG pending.',
   },
   {
     id: 'patient-1031',
@@ -22,6 +24,8 @@ export const clinicPulseTriageFixture: ClinicPulsePatientRecord[] = [
     status: 'waiting',
     labsPending: 1,
     updatedAt: '2026-05-24T19:36:00.000Z',
+    consentMissing: true,
+    handoffNote: 'Needs consent form before medication order.',
   },
   {
     id: 'patient-1042',
@@ -33,5 +37,7 @@ export const clinicPulseTriageFixture: ClinicPulsePatientRecord[] = [
     status: 'observing',
     labsPending: 0,
     updatedAt: '2026-05-24T19:41:00.000Z',
+    consentMissing: false,
+    handoffNote: 'Fall risk band applied; family notified.',
   },
 ];

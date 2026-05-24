@@ -64,8 +64,12 @@ export function saveClinicPulseState(state: ClinicPulseAppState, storage: Storag
     activePanel: state.activePanel,
   };
 
-  storage.setItem(CLINICPULSE_STORAGE_KEY, JSON.stringify(payload));
-  return true;
+  try {
+    storage.setItem(CLINICPULSE_STORAGE_KEY, JSON.stringify(payload));
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function getStorage(): Storage | undefined {

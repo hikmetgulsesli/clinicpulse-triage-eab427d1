@@ -16,6 +16,8 @@ export interface ClinicPulsePatientRecord {
   status: ClinicPulsePatientStatus;
   labsPending: number;
   updatedAt: string;
+  consentMissing: boolean;
+  handoffNote: string;
 }
 
 export interface ClinicPulseCounts {
@@ -65,7 +67,7 @@ export function getClinicPulseCounts(records: ClinicPulsePatientRecord[]): Clini
 export function buildClinicPulseState(
   partial: Partial<Omit<ClinicPulseAppState, 'counts' | 'selectedRecord'>> = {},
 ): ClinicPulseAppState {
-  const records = partial.records?.length ? partial.records : clinicPulseTriageFixture;
+  const records = (partial.records?.length ? partial.records : clinicPulseTriageFixture).map(normalizeClinicPulseRecord);
   const selectedRecordId = partial.selectedRecordId ?? records[0]?.id ?? null;
   const selectedRecord = records.find((record) => record.id === selectedRecordId) ?? records[0] ?? null;
   const route = partial.route ?? partial.activeScreen ?? 'triage-board';
@@ -80,6 +82,14 @@ export function buildClinicPulseState(
     storageStatus: partial.storageStatus ?? 'idle',
     lastError: partial.lastError ?? null,
     activePanel: partial.activePanel ?? panelForRoute(route),
+  };
+}
+
+function normalizeClinicPulseRecord(record: ClinicPulsePatientRecord): ClinicPulsePatientRecord {
+  return {
+    ...record,
+    consentMissing: record.consentMissing ?? false,
+    handoffNote: record.handoffNote ?? 'No handoff note recorded.',
   };
 }
 
@@ -107,6 +117,9 @@ export type ClinicPulseAction =
   | { type: 'select-record'; recordId: string | null }
   | { type: 'assign-room' }
   | { type: 'check-labs' }
+  | { type: 'advance-priority' }
+  | { type: 'toggle-consent' }
+  | { type: 'handoff-note' }
   | { type: 'set-storage-status'; storageStatus: ClinicPulseStorageStatus; lastError?: string | null }
   | { type: 'reset-records' };
 
@@ -138,6 +151,26 @@ export function clinicPulseReducer(state: ClinicPulseAppState, action: ClinicPul
       return updateSelectedRecord(state, (record) => ({
         ...record,
         labsPending: Math.max(0, record.labsPending - 1),
+        updatedAt: new Date().toISOString(),
+      }));
+    case 'advance-priority':
+      return updateSelectedRecord(state, (record) => ({
+        ...record,
+        acuity: record.acuity === 'standard' ? 'urgent' : 'emergent',
+        updatedAt: new Date().toISOString(),
+      }));
+    case 'toggle-consent':
+      return updateSelectedRecord(state, (record) => ({
+        ...record,
+        consentMissing: !record.consentMissing,
+        updatedAt: new Date().toISOString(),
+      }));
+    case 'handoff-note':
+      return updateSelectedRecord(state, (record) => ({
+        ...record,
+        handoffNote: record.handoffNote.includes('Charge nurse review')
+          ? 'Handoff note updated for room team.'
+          : 'Charge nurse review requested before room transfer.',
         updatedAt: new Date().toISOString(),
       }));
     case 'set-storage-status':
