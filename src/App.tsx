@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useReducer } from 'react';
+import { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import {
   EmptyAndErrorRecoveryClinicpulseTriage,
   PatientEditorClinicpulseTriage,
@@ -24,6 +24,7 @@ const initialState = buildClinicPulseState();
 
 export default function App() {
   const [state, dispatch] = useReducer(clinicPulseReducer, initialState);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
     const result = loadClinicPulseState();
@@ -33,14 +34,17 @@ export default function App() {
       storageStatus: result.recovered ? 'recoverable-error' : result.state.storageStatus,
       lastError: result.error,
     });
+    setIsHydrated(true);
   }, []);
 
   useEffect(() => {
+    if (!isHydrated) return;
+
     const saved = saveClinicPulseState(state);
     if (!saved && state.storageStatus !== 'unavailable') {
       dispatch({ type: 'set-storage-status', storageStatus: 'unavailable' });
     }
-  }, [state]);
+  }, [isHydrated, state]);
 
   const navigate = useCallback((route: ClinicPulseRoute, panel?: ClinicPulsePanel) => {
     dispatch({ type: 'navigate', route, panel });
