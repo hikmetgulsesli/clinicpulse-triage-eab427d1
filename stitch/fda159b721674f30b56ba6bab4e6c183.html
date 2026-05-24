@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Patient Operations - ClinicPulse Triage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#191c1e",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "background": "#f7f9fb",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#131b2e",
+                        "on-primary-container": "#7c839b",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#000000",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary": "#000000",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-fixed": "#001a42",
+                        "inverse-surface": "#2d3133",
+                        "surface-container": "#eceef0",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#001a42",
+                        "tertiary-fixed": "#d8e2ff",
+                        "surface-tint": "#565e74",
+                        "surface-bright": "#f7f9fb",
+                        "primary-container": "#131b2e",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "outline": "#76777d",
+                        "primary-fixed": "#dae2fd",
+                        "on-secondary-container": "#57657b",
+                        "secondary": "#515f74",
+                        "on-tertiary-container": "#3980f4",
+                        "surface": "#f7f9fb",
+                        "on-surface-variant": "#45464d",
+                        "secondary-container": "#d5e3fd",
+                        "inverse-primary": "#bec6e0",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#d5e3fd",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "on-background": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "default": "16px",
+                        "margin-mobile": "12px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "compact": "8px",
+                        "margin-desktop": "24px",
+                        "relaxed": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "data-mono": ["JetBrains Mono"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-bold": ["12px", { "lineHeight": "16px", "fontWeight": "700" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "data-mono": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for dense tables */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c6c6cd;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #76777d;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-sm h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[240px] z-30 bg-surface-container-low border-r border-outline-variant flex flex-col py-default px-compact">
+<!-- Header -->
+<div class="mb-default px-compact">
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">ClinicPulse</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Emergency Triage</p>
+</div>
+<!-- CTA -->
+<div class="mb-default px-compact">
+<button class="w-full bg-primary text-on-primary py-compact px-default rounded flex items-center justify-center gap-compact font-label-md text-label-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                Add Patient
+            </button>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex-1 flex flex-col gap-base">
+<!-- Active Tab: Operations -->
+<a class="flex items-center gap-default py-compact px-compact text-primary font-bold border-r-2 border-primary bg-surface-container-highest transition-colors duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">clinical_notes</span>
+                Operations
+            </a>
+<!-- Inactive Tab: Triage Board -->
+<a class="flex items-center gap-default py-compact px-compact text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Triage Board
+            </a>
+</nav>
+<!-- Footer Tabs -->
+<div class="mt-auto flex flex-col gap-base pt-default border-t border-outline-variant">
+<a class="flex items-center gap-default py-compact px-compact text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-default py-compact px-compact text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">help</span>
+                Support
+            </a>
+</div>
+</aside>
+<!-- Main Wrapper -->
+<div class="flex-1 flex flex-col ml-[240px] relative w-full h-full">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-[calc(100%-240px)] z-20 bg-surface border-b border-outline-variant flex justify-between items-center h-12 px-margin-desktop transition-all duration-150">
+<div class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-margin-desktop w-full max-w-xl">
+                ClinicPulse Triage
+                <!-- Search Bar (on_left) -->
+<div class="relative flex-1 ml-gutter">
+<span class="material-symbols-outlined absolute left-compact top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-size: 16px;">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant text-on-surface font-body-sm text-body-sm rounded pl-[32px] pr-compact py-[4px] focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-shadow" placeholder="Search patients, IDs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-compact">
+<button class="p-compact text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-compact text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">history</span>
+</button>
+<button class="p-compact text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 mt-12 p-margin-desktop overflow-y-auto overflow-x-hidden flex flex-col gap-margin-desktop relative">
+<!-- Header & Metrics -->
+<section class="flex flex-col gap-gutter">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-md text-headline-md text-on-surface">Patient Operations</h2>
+<div class="flex gap-compact text-on-surface-variant">
+<span class="font-body-sm text-body-sm flex items-center gap-base">
+<span class="material-symbols-outlined" style="font-size: 14px;">update</span>
+                            Last updated: Just now
+                        </span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Metric 1 -->
+<div class="bg-surface border border-outline-variant rounded p-default flex flex-col gap-base">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Waiting</span>
+<div class="font-display-lg text-display-lg text-on-surface">12</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface border border-outline-variant rounded p-default flex flex-col gap-base border-l-4 border-l-error">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Urgent</span>
+<div class="font-display-lg text-display-lg text-error">2</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface border border-outline-variant rounded p-default flex flex-col gap-base">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Avg Wait Time</span>
+<div class="font-display-lg text-display-lg text-on-surface">18<span class="text-headline-sm ml-1 text-on-surface-variant">m</span></div>
+</div>
+</div>
+</section>
+<!-- Filters & Actions -->
+<section class="flex justify-between items-center bg-surface p-compact border border-outline-variant rounded">
+<div class="flex gap-compact">
+<!-- Quiet Input Styling for Filters -->
+<select class="bg-transparent border-b border-outline-variant pb-1 font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-primary cursor-pointer pr-6">
+<option>All Priorities</option>
+<option>Urgent</option>
+<option>High</option>
+<option>Moderate</option>
+</select>
+<select class="bg-transparent border-b border-outline-variant pb-1 font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-primary cursor-pointer pr-6">
+<option>All Statuses</option>
+<option>Waiting</option>
+<option>In-Progress</option>
+</select>
+<select class="bg-transparent border-b border-outline-variant pb-1 font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-primary cursor-pointer pr-6">
+<option>All Rooms</option>
+<option>Triage 1</option>
+<option>Triage 2</option>
+</select>
+</div>
+<div>
+<button class="flex items-center gap-base text-secondary font-label-md text-label-md hover:bg-surface-container-low px-compact py-[4px] rounded border border-outline-variant transition-colors">
+<span class="material-symbols-outlined" style="font-size: 16px;">refresh</span>
+                        Retry Load
+                    </button>
+</div>
+</section>
+<!-- Data Table -->
+<section class="flex-1 bg-surface border border-outline-variant rounded overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">Patient Name</th>
+<th class="py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">ID</th>
+<th class="py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">Triage Level</th>
+<th class="py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">Wait Time</th>
+<th class="py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">Room Status</th>
+<th class="py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold text-center">Consent</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-outline-variant">
+<!-- Selected Row Example -->
+<tr class="h-[48px] bg-primary-fixed hover:bg-primary-fixed-dim transition-colors cursor-pointer">
+<td class="px-default font-medium">Doe, Jonathan</td>
+<td class="px-default font-data-mono text-data-mono text-on-surface-variant">PT-8429</td>
+<td class="px-default">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-error text-on-error uppercase tracking-wide">Urgent</span>
+</td>
+<td class="px-default font-data-mono text-data-mono">42m</td>
+<td class="px-default">
+<span class="inline-flex items-center gap-1 border border-outline-variant rounded px-2 py-0.5 text-[11px] text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-error"></span> Waiting
+                                    </span>
+</td>
+<td class="px-default text-center">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">check_circle</span>
+</td>
+</tr>
+<!-- Normal Row -->
+<tr class="h-[48px] hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="px-default">Smith, Sarah</td>
+<td class="px-default font-data-mono text-data-mono text-on-surface-variant">PT-8430</td>
+<td class="px-default">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-secondary-container text-on-secondary-container uppercase tracking-wide">High</span>
+</td>
+<td class="px-default font-data-mono text-data-mono">15m</td>
+<td class="px-default">
+<span class="inline-flex items-center gap-1 border border-outline-variant rounded px-2 py-0.5 text-[11px] text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Triage 1
+                                    </span>
+</td>
+<td class="px-default text-center">
+<span class="material-symbols-outlined text-outline-variant" style="font-size: 16px;">pending</span>
+</td>
+</tr>
+<tr class="h-[48px] hover:bg-surface-container-low transition-colors cursor-pointer bg-background">
+<td class="px-default">Chen, Wei</td>
+<td class="px-default font-data-mono text-data-mono text-on-surface-variant">PT-8431</td>
+<td class="px-default">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-surface-variant text-on-surface-variant uppercase tracking-wide border border-outline-variant">Moderate</span>
+</td>
+<td class="px-default font-data-mono text-data-mono">08m</td>
+<td class="px-default">
+<span class="inline-flex items-center gap-1 border border-outline-variant rounded px-2 py-0.5 text-[11px] text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-primary"></span> In-Progress
+                                    </span>
+</td>
+<td class="px-default text-center">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">check_circle</span>
+</td>
+</tr>
+<tr class="h-[48px] hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="px-default">Alvarez, Maria</td>
+<td class="px-default font-data-mono text-data-mono text-on-surface-variant">PT-8432</td>
+<td class="px-default">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-surface-variant text-on-surface-variant uppercase tracking-wide border border-outline-variant">Low</span>
+</td>
+<td class="px-default font-data-mono text-data-mono">02m</td>
+<td class="px-default">
+<span class="inline-flex items-center gap-1 border border-outline-variant rounded px-2 py-0.5 text-[11px] text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-error"></span> Waiting
+                                    </span>
+</td>
+<td class="px-default text-center">
+<span class="material-symbols-outlined text-primary" style="font-size: 16px;">check_circle</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- Backdrop for Drawer -->
+<div aria-hidden="true" class="fixed inset-0 bg-inverse-surface/10 backdrop-blur-[2px] z-30 ml-[240px]"></div>
+<!-- Side Drawer (Patient Details) -->
+<aside class="fixed right-0 top-0 h-screen w-[480px] bg-surface border-l border-outline-variant shadow-[-4px_0_12px_rgba(0,0,0,0.05)] z-40 flex flex-col transform translate-x-0 transition-transform duration-300">
+<!-- Drawer Header -->
+<div class="p-default border-b border-outline-variant flex justify-between items-start bg-surface-container-lowest">
+<div>
+<div class="flex items-center gap-compact mb-1">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Doe, Jonathan</h3>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-error text-on-error uppercase tracking-wide">Urgent</span>
+</div>
+<div class="font-data-mono text-data-mono text-on-surface-variant flex gap-default">
+<span>ID: PT-8429</span>
+<span>DOB: 1982-05-14 (41y)</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-1 rounded transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Drawer Content (Scrollable) -->
+<div class="flex-1 overflow-y-auto p-default flex flex-col gap-margin-desktop bg-surface-bright">
+<!-- Handoff Notes Section -->
+<section>
+<h4 class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider mb-compact border-b border-outline-variant pb-1">Handoff Notes</h4>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-compact font-body-sm text-body-sm text-on-surface leading-relaxed relative">
+<span class="material-symbols-outlined absolute top-compact right-compact text-outline-variant" style="font-size: 16px;">edit</span>
+                        Patient presents with severe chest pain radiating to left arm. Diaphoretic. Vitals unstable upon EMS arrival. Initiating STEMI protocol. Awaiting ECG interpretation.
+                    </div>
+</section>
+<!-- Activity Event Timeline Section -->
+<section>
+<h4 class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider mb-compact border-b border-outline-variant pb-1">Activity Timeline</h4>
+<div class="flex flex-col gap-0 relative">
+<!-- Vertical line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-px bg-outline-variant z-0"></div>
+<!-- Event 1 -->
+<div class="flex gap-compact relative z-10 py-compact">
+<div class="w-6 h-6 rounded-full bg-surface-container-lowest border-2 border-primary flex items-center justify-center mt-0.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface">ECG Ordered</span>
+<span class="font-data-mono text-data-mono text-[10px] text-on-surface-variant">10:42 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ordered by Dr. R. Vance. Stat priority.</p>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="flex gap-compact relative z-10 py-compact">
+<div class="w-6 h-6 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center mt-0.5">
+<span class="material-symbols-outlined text-outline-variant" style="font-size: 14px;">check</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-label-md text-label-md text-on-surface">Vitals Recorded</span>
+<span class="font-data-mono text-data-mono text-[10px] text-on-surface-variant">10:35 AM</span>
+</div>
+<div class="font-data-mono text-data-mono text-[11px] bg-surface-container-low p-1.5 rounded inline-block text-on-surface">
+                                    BP: 160/95 | HR: 110 | O2: 94%
+                                </div>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="flex gap-compact relative z-10 py-compact">
+<div class="w-6 h-6 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center mt-0.5">
+<span class="material-symbols-outlined text-outline-variant" style="font-size: 14px;">check</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-label-md text-label-md text-on-surface">Patient Arrived (EMS)</span>
+<span class="font-data-mono text-data-mono text-[10px] text-on-surface-variant">10:30 AM</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Drawer Footer / Actions -->
+<div class="p-default border-t border-outline-variant bg-surface flex justify-end gap-compact">
+<button class="px-default py-compact font-label-md text-label-md border border-outline-variant text-on-surface rounded hover:bg-surface-container-low transition-colors">
+                    View Full Record
+                </button>
+<button class="px-default py-compact font-label-md text-label-md bg-primary text-on-primary rounded hover:opacity-90 transition-opacity">
+                    Assign Room
+                </button>
+</div>
+</aside>
+</div>
+</body></html>

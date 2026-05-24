@@ -1,0 +1,38 @@
+[
+  {
+    "screenId": "ba560c97a33d4630aa209a99e1719cde",
+    "name": "Empty and Error Recovery - ClinicPulse Triage",
+    "type": "error",
+    "description": "Empty and Error Recovery - ClinicPulse Triage screen",
+    "surfaceIds": [
+      "SURF_EMPTY_AND_ERROR_RECOVERY"
+    ]
+  },
+  {
+    "screenId": "5a395a3ed8574b94bd9190449e9603b5",
+    "name": "Patient Editor - ClinicPulse Triage",
+    "type": "form",
+    "description": "Patient Editor - ClinicPulse Triage screen",
+    "surfaceIds": [
+      "SURF_PATIENT_EDITOR"
+    ]
+  },
+  {
+    "screenId": "bd7684e6d77047d0be92756ab6fc430e",
+    "name": "Triage Board - ClinicPulse Triage",
+    "type": "app-screen",
+    "description": "Triage Board - ClinicPulse Triage screen",
+    "surfaceIds": [
+      "SURF_TRIAGE_BOARD"
+    ]
+  },
+  {
+    "screenId": "fda159b721674f30b56ba6bab4e6c183",
+    "name": "Patient Operations - ClinicPulse Triage",
+    "type": "app-screen",
+    "description": "Patient Operations - ClinicPulse Triage screen",
+    "surfaceIds": [
+      "SURF_PATIENT_OPERATIONS"
+    ]
+  }
+]

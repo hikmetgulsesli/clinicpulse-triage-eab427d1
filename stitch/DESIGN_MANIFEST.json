@@ -1,0 +1,46 @@
+[
+  {
+    "screenId": "ba560c97a33d4630aa209a99e1719cde",
+    "title": "Empty and Error Recovery - ClinicPulse Triage",
+    "htmlFile": "ba560c97a33d4630aa209a99e1719cde.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2U4ZWRkOWRjM2JkYzRkM2RiODFkYzExN2RhYTY2Mzc1EgsSBxCN19Wi9xcYAZIBIwoKcHJvamVjdF9pZBIVQhMzMzE1NTg3NTMxNTIwOTMyODgz&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/clinicpulse-triage-eab427d1/stitch/ba560c97a33d4630aa209a99e1719cde.html",
+    "surfaceIds": [
+      "SURF_EMPTY_AND_ERROR_RECOVERY"
+    ]
+  },
+  {
+    "screenId": "5a395a3ed8574b94bd9190449e9603b5",
+    "title": "Patient Editor - ClinicPulse Triage",
+    "htmlFile": "5a395a3ed8574b94bd9190449e9603b5.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2IwMjU5NjAxYTNlNzQ5MjJiNWM0MmE5ZTI1NWI4Yzc0EgsSBxCN19Wi9xcYAZIBIwoKcHJvamVjdF9pZBIVQhMzMzE1NTg3NTMxNTIwOTMyODgz&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/clinicpulse-triage-eab427d1/stitch/5a395a3ed8574b94bd9190449e9603b5.html",
+    "surfaceIds": [
+      "SURF_PATIENT_EDITOR"
+    ]
+  },
+  {
+    "screenId": "bd7684e6d77047d0be92756ab6fc430e",
+    "title": "Triage Board - ClinicPulse Triage",
+    "htmlFile": "bd7684e6d77047d0be92756ab6fc430e.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzExOTU5ZTQ0ZDdiYjRmYjliNDE1NjJkYzg3ZTNmZmQ4EgsSBxCN19Wi9xcYAZIBIwoKcHJvamVjdF9pZBIVQhMzMzE1NTg3NTMxNTIwOTMyODgz&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/clinicpulse-triage-eab427d1/stitch/bd7684e6d77047d0be92756ab6fc430e.html",
+    "surfaceIds": [
+      "SURF_TRIAGE_BOARD"
+    ]
+  },
+  {
+    "screenId": "fda159b721674f30b56ba6bab4e6c183",
+    "title": "Patient Operations - ClinicPulse Triage",
+    "htmlFile": "fda159b721674f30b56ba6bab4e6c183.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzQzNjdhYTJmY2ZiOTQ4MDJiNTYxNWE3NmE3MzAzZDhmEgsSBxCN19Wi9xcYAZIBIwoKcHJvamVjdF9pZBIVQhMzMzE1NTg3NTMxNTIwOTMyODgz&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/clinicpulse-triage-eab427d1/stitch/fda159b721674f30b56ba6bab4e6c183.html",
+    "surfaceIds": [
+      "SURF_PATIENT_OPERATIONS"
+    ]
+  }
+]

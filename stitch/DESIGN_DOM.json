@@ -1,0 +1,2135 @@
+{
+  "generatedAt": "2026-05-24T23:20:02.439Z",
+  "screenCount": 4,
+  "screens": {
+    "5a395a3ed8574b94bd9190449e9603b5": {
+      "screenId": "5a395a3ed8574b94bd9190449e9603b5",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "nav",
+          "layout": "flex-col",
+          "classes": [
+            "bg-surface-container-low",
+            "dark:bg-surface-container-low",
+            "flex",
+            "flex-col",
+            "h-screen",
+            "py-default",
+            "px-compact",
+            "fixed",
+            "left-0",
+            "w-[240px]"
+          ],
+          "childCount": 7
+        },
+        {
+          "tag": "main",
+          "layout": "flex-col",
+          "classes": [
+            "flex-1",
+            "flex",
+            "flex-col",
+            "min-w-0",
+            "md:ml-[240px]"
+          ],
+          "childCount": 30
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "Patient",
+          "classes": [
+            "w-full",
+            "flex",
+            "justify-center",
+            "items-center",
+            "gap-compact",
+            "bg-primary",
+            "text-on-primary",
+            "py-compact",
+            "rounded-lg",
+            "hover:opacity-90",
+            "transition-opacity",
+            "mb-compact"
+          ],
+          "icon": "add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "menu",
+          "classes": [
+            "md:hidden",
+            "text-on-surface-variant",
+            "hover:bg-surface-container-low",
+            "p-1",
+            "rounded-DEFAULT",
+            "transition-all",
+            "duration-150"
+          ],
+          "icon": "menu",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "notifications",
+          "classes": [
+            "text-on-surface-variant",
+            "hover:bg-surface-container-low",
+            "p-compact",
+            "rounded-full",
+            "transition-all",
+            "duration-150",
+            "flex",
+            "items-center",
+            "justify-center"
+          ],
+          "icon": "notifications",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/notifications",
+          "expectedRoute": "/notifications",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "history",
+          "classes": [
+            "text-on-surface-variant",
+            "hover:bg-surface-container-low",
+            "p-compact",
+            "rounded-full",
+            "transition-all",
+            "duration-150",
+            "flex",
+            "items-center",
+            "justify-center"
+          ],
+          "icon": "history",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/history",
+          "expectedRoute": "/history",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "account_circle",
+          "classes": [
+            "text-on-surface-variant",
+            "hover:bg-surface-container-low",
+            "p-compact",
+            "rounded-full",
+            "transition-all",
+            "duration-150",
+            "flex",
+            "items-center",
+            "justify-center"
+          ],
+          "icon": "account_circle",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Save Now",
+          "classes": [
+            "font-label-bold",
+            "text-label-bold",
+            "text-primary",
+            "underline"
+          ],
+          "icon": null,
+          "action": "form-submit",
+          "expectedBehavior": "validate inputs and submit/apply changes"
+        },
+        {
+          "kind": "button",
+          "label": "Cancel Edit",
+          "classes": [
+            "px-gutter",
+            "py-2",
+            "rounded-lg",
+            "font-label-bold",
+            "text-label-bold",
+            "text-on-surface",
+            "bg-surface",
+            "border",
+            "border-outline-variant",
+            "hover:bg-surface-container-highest",
+            "transition-colors",
+            "w-full",
+            "md:w-auto"
+          ],
+          "icon": null,
+          "action": "dismiss",
+          "expectedBehavior": "close dialog/panel or return to previous state"
+        },
+        {
+          "kind": "button",
+          "label": "Record",
+          "classes": [
+            "px-gutter",
+            "py-2",
+            "rounded-lg",
+            "font-label-bold",
+            "text-label-bold",
+            "text-on-primary",
+            "bg-primary",
+            "hover:opacity-90",
+            "transition-opacity",
+            "w-full",
+            "md:w-auto",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-compact"
+          ],
+          "icon": "save",
+          "action": "form-submit",
+          "expectedBehavior": "validate inputs and submit/apply changes"
+        },
+        {
+          "kind": "button",
+          "label": "ClinicPulse Emergency Triage",
+          "classes": [],
+          "icon": "medical_services",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "input",
+          "type": "text",
+          "label": "e.g. Jane Doe",
+          "placeholder": "e.g. Jane Doe",
+          "name": "fullName",
+          "classes": [
+            "w-full",
+            "bg-surface",
+            "border-error",
+            "text-on-surface",
+            "font-body-md",
+            "text-body-md",
+            "rounded-DEFAULT",
+            "px-compact",
+            "py-2",
+            "focus:ring-1",
+            "focus:ring-error",
+            "focus:border-error",
+            "transition-colors"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "date",
+          "label": "dob",
+          "placeholder": "",
+          "name": "dob",
+          "classes": [
+            "w-full",
+            "bg-surface",
+            "border-outline-variant",
+            "text-on-surface",
+            "font-body-md",
+            "text-body-md",
+            "rounded-DEFAULT",
+            "px-compact",
+            "py-2",
+            "focus:ring-1",
+            "focus:ring-primary",
+            "focus:border-primary",
+            "transition-colors"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "radio",
+          "label": "priority",
+          "placeholder": "",
+          "name": "priority",
+          "classes": [
+            "peer",
+            "sr-only"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "textarea",
+          "label": "Describe the primary reason for visit...",
+          "placeholder": "Describe the primary reason for visit...",
+          "name": "complaint",
+          "classes": [
+            "w-full",
+            "bg-surface",
+            "border-outline-variant",
+            "text-on-surface",
+            "font-body-md",
+            "text-body-md",
+            "rounded-DEFAULT",
+            "px-compact",
+            "py-2",
+            "focus:ring-1",
+            "focus:ring-primary",
+            "focus:border-primary",
+            "transition-colors",
+            "resize-none"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "checkbox",
+          "label": "consent",
+          "placeholder": "",
+          "name": "consent",
+          "classes": [
+            "h-4",
+            "w-4",
+            "rounded",
+            "border-outline-variant",
+            "text-primary",
+            "focus:ring-primary",
+            "focus:ring-2",
+            "bg-surface",
+            "cursor-pointer"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "navLinks": [
+        {
+          "kind": "link",
+          "label": "Operations",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "clinical_notes",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Triage Board",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "dashboard",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "settings",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "help",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "medical_services",
+        "clinical_notes",
+        "dashboard",
+        "add",
+        "settings",
+        "help",
+        "menu",
+        "notifications",
+        "history",
+        "account_circle",
+        "info",
+        "error",
+        "save"
+      ],
+      "images": [],
+      "cssVars": {},
+      "colorPalette": {
+        "on-surface": "#191c1e",
+        "tertiary-fixed-dim": "#adc6ff",
+        "on-secondary-fixed-variant": "#3a485c",
+        "background": "#f7f9fb",
+        "on-primary-fixed-variant": "#3f465c",
+        "surface-container-lowest": "#ffffff",
+        "on-primary-fixed": "#131b2e",
+        "on-primary-container": "#7c839b",
+        "on-tertiary": "#ffffff",
+        "primary": "#000000",
+        "outline-variant": "#c6c6cd",
+        "surface-container-highest": "#e0e3e5",
+        "on-tertiary-fixed-variant": "#004395",
+        "surface-variant": "#e0e3e5",
+        "tertiary": "#000000",
+        "surface-dim": "#d8dadc",
+        "on-tertiary-fixed": "#001a42",
+        "inverse-surface": "#2d3133",
+        "surface-container": "#eceef0",
+        "surface-container-high": "#e6e8ea",
+        "surface-container-low": "#f2f4f6",
+        "secondary-fixed-dim": "#b9c7e0",
+        "primary-fixed-dim": "#bec6e0",
+        "on-error-container": "#93000a",
+        "error-container": "#ffdad6",
+        "on-primary": "#ffffff",
+        "tertiary-container": "#001a42",
+        "tertiary-fixed": "#d8e2ff",
+        "surface-tint": "#565e74",
+        "surface-bright": "#f7f9fb",
+        "primary-container": "#131b2e",
+        "on-secondary": "#ffffff",
+        "inverse-on-surface": "#eff1f3",
+        "outline": "#76777d",
+        "primary-fixed": "#dae2fd",
+        "on-secondary-container": "#57657b",
+        "secondary": "#515f74",
+        "on-tertiary-container": "#3980f4",
+        "surface": "#f7f9fb",
+        "on-surface-variant": "#45464d",
+        "secondary-container": "#d5e3fd",
+        "inverse-primary": "#bec6e0",
+        "on-error": "#ffffff",
+        "secondary-fixed": "#d5e3fd",
+        "error": "#ba1a1a",
+        "on-secondary-fixed": "#0d1c2f",
+        "on-background": "#191c1e"
+      },
+      "fonts": [
+        "Inter",
+        "JetBrains Mono",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "1"
+      },
+      "behaviorContract": [
+        {
+          "kind": "link",
+          "label": "Operations",
+          "icon": "clinical_notes",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Triage Board",
+          "icon": "dashboard",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "icon": "settings",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "icon": "help",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "button",
+          "label": "Patient",
+          "icon": "add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "menu",
+          "icon": "menu",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "notifications",
+          "icon": "notifications",
+          "action": "navigate",
+          "route": "/notifications",
+          "expectedBehavior": "navigate:/notifications"
+        },
+        {
+          "kind": "button",
+          "label": "history",
+          "icon": "history",
+          "action": "navigate",
+          "route": "/history",
+          "expectedBehavior": "navigate:/history"
+        },
+        {
+          "kind": "button",
+          "label": "account_circle",
+          "icon": "account_circle",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Save Now",
+          "icon": null,
+          "action": "form-submit",
+          "expectedBehavior": "validate inputs and submit/apply changes"
+        },
+        {
+          "kind": "button",
+          "label": "Cancel Edit",
+          "icon": null,
+          "action": "dismiss",
+          "expectedBehavior": "close dialog/panel or return to previous state"
+        },
+        {
+          "kind": "button",
+          "label": "Record",
+          "icon": "save",
+          "action": "form-submit",
+          "expectedBehavior": "validate inputs and submit/apply changes"
+        },
+        {
+          "kind": "button",
+          "label": "ClinicPulse Emergency Triage",
+          "icon": "medical_services",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "input",
+          "label": "e.g. Jane Doe",
+          "type": "text",
+          "placeholder": "e.g. Jane Doe",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "dob",
+          "type": "date",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "priority",
+          "type": "radio",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "Describe the primary reason for visit...",
+          "type": "textarea",
+          "placeholder": "Describe the primary reason for visit...",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "consent",
+          "type": "checkbox",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "tabBar": [
+        {
+          "kind": "button",
+          "label": "ClinicPulse Emergency Triage",
+          "icon": "medical_services",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Operations",
+          "icon": "clinical_notes",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Triage Board",
+          "icon": "dashboard",
+          "route": "#",
+          "active": false
+        },
+        {
+          "kind": "button",
+          "label": "Patient",
+          "icon": "add",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "icon": "settings",
+          "route": "#",
+          "active": false
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "icon": "help",
+          "route": "#",
+          "active": false
+        }
+      ],
+      "title": "Patient Editor - ClinicPulse Triage"
+    },
+    "ba560c97a33d4630aa209a99e1719cde": {
+      "screenId": "ba560c97a33d4630aa209a99e1719cde",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "nav",
+          "layout": "flex-col",
+          "classes": [
+            "hidden",
+            "md:flex",
+            "flex-col",
+            "h-screen",
+            "py-default",
+            "px-compact",
+            "bg-surface-container-low",
+            "dark:bg-surface-container-low",
+            "text-primary",
+            "dark:text-on-primary-fixed-variant"
+          ],
+          "childCount": 4
+        },
+        {
+          "tag": "header",
+          "layout": "flex-row",
+          "classes": [
+            "flex",
+            "justify-between",
+            "items-center",
+            "h-12",
+            "px-margin-desktop",
+            "bg-surface",
+            "dark:bg-surface",
+            "text-primary",
+            "dark:text-on-primary-fixed-variant",
+            "border-b"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "main",
+          "layout": "flex-row",
+          "classes": [
+            "flex-1",
+            "overflow-y-auto",
+            "p-margin-desktop",
+            "sm:p-relaxed",
+            "flex",
+            "items-center",
+            "justify-center",
+            "bg-background"
+          ],
+          "childCount": 4
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "Patient",
+          "classes": [
+            "bg-primary",
+            "text-on-primary",
+            "rounded-lg",
+            "py-compact",
+            "px-default",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-compact",
+            "mb-default",
+            "hover:bg-inverse-surface",
+            "transition-colors",
+            "duration-200"
+          ],
+          "icon": "add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "menu",
+          "classes": [
+            "md:hidden",
+            "p-compact",
+            "rounded-lg",
+            "hover:bg-surface-container-low",
+            "transition-colors",
+            "text-on-surface-variant"
+          ],
+          "icon": "menu",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "notifications",
+          "classes": [
+            "p-compact",
+            "rounded-full",
+            "text-on-surface-variant",
+            "dark:text-on-surface-variant",
+            "hover:bg-surface-container-low",
+            "dark:hover:bg-surface-container-low",
+            "transition-all",
+            "duration-150",
+            "relative"
+          ],
+          "icon": "notifications",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/notifications",
+          "expectedRoute": "/notifications",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "history",
+          "classes": [
+            "p-compact",
+            "rounded-full",
+            "text-on-surface-variant",
+            "dark:text-on-surface-variant",
+            "hover:bg-surface-container-low",
+            "dark:hover:bg-surface-container-low",
+            "transition-all",
+            "duration-150"
+          ],
+          "icon": "history",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/history",
+          "expectedRoute": "/history",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "account_circle",
+          "classes": [
+            "p-compact",
+            "rounded-full",
+            "text-on-surface-variant",
+            "dark:text-on-surface-variant",
+            "hover:bg-surface-container-low",
+            "dark:hover:bg-surface-container-low",
+            "transition-all",
+            "duration-150"
+          ],
+          "icon": "account_circle",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Retry Load",
+          "classes": [
+            "w-full",
+            "sm:w-auto",
+            "bg-primary",
+            "text-on-primary",
+            "font-label-md",
+            "text-label-md",
+            "font-bold",
+            "py-compact",
+            "px-default",
+            "rounded-lg",
+            "hover:bg-inverse-surface",
+            "transition-colors",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-compact"
+          ],
+          "icon": "refresh",
+          "action": "retry",
+          "expectedBehavior": "retry the failed action and show loading/error feedback"
+        },
+        {
+          "kind": "button",
+          "label": "Create Patient",
+          "classes": [
+            "w-full",
+            "sm:w-auto",
+            "bg-surface",
+            "text-primary",
+            "border",
+            "border-primary",
+            "font-label-md",
+            "text-label-md",
+            "font-bold",
+            "py-compact",
+            "px-default",
+            "rounded-lg",
+            "hover:bg-surface-container-low",
+            "transition-colors",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-compact"
+          ],
+          "icon": "person_add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Clear All Filters",
+          "classes": [
+            "mt-default",
+            "font-label-md",
+            "text-label-md",
+            "text-primary",
+            "hover:underline",
+            "flex",
+            "items-center",
+            "gap-compact",
+            "transition-colors"
+          ],
+          "icon": "clear_all",
+          "action": "search",
+          "expectedBehavior": "filter/search visible results from input/query"
+        },
+        {
+          "kind": "button",
+          "label": "ClinicPulse Emergency Triage",
+          "classes": [],
+          "icon": "monitor_heart",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "input",
+          "type": "text",
+          "label": "Search Patients...",
+          "placeholder": "Search Patients...",
+          "name": "",
+          "classes": [
+            "pl-8",
+            "pr-compact",
+            "py-1",
+            "bg-surface-container-low",
+            "border",
+            "border-outline-variant",
+            "rounded-lg",
+            "font-body-sm",
+            "text-body-sm",
+            "focus:outline-none",
+            "focus:border-primary",
+            "transition-colors",
+            "w-64"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "navLinks": [
+        {
+          "kind": "link",
+          "label": "Operations",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "clinical_notes",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Triage Board",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "dashboard",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "settings",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "help",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "monitor_heart",
+        "add",
+        "clinical_notes",
+        "dashboard",
+        "settings",
+        "help",
+        "menu",
+        "search",
+        "notifications",
+        "history",
+        "account_circle",
+        "filter_list_off",
+        "info",
+        "refresh",
+        "person_add",
+        "clear_all"
+      ],
+      "images": [],
+      "cssVars": {},
+      "colorPalette": {
+        "on-surface": "#191c1e",
+        "tertiary-fixed-dim": "#adc6ff",
+        "on-secondary-fixed-variant": "#3a485c",
+        "background": "#f7f9fb",
+        "on-primary-fixed-variant": "#3f465c",
+        "surface-container-lowest": "#ffffff",
+        "on-primary-fixed": "#131b2e",
+        "on-primary-container": "#7c839b",
+        "on-tertiary": "#ffffff",
+        "primary": "#000000",
+        "outline-variant": "#c6c6cd",
+        "surface-container-highest": "#e0e3e5",
+        "on-tertiary-fixed-variant": "#004395",
+        "surface-variant": "#e0e3e5",
+        "tertiary": "#000000",
+        "surface-dim": "#d8dadc",
+        "on-tertiary-fixed": "#001a42",
+        "inverse-surface": "#2d3133",
+        "surface-container": "#eceef0",
+        "surface-container-high": "#e6e8ea",
+        "surface-container-low": "#f2f4f6",
+        "secondary-fixed-dim": "#b9c7e0",
+        "primary-fixed-dim": "#bec6e0",
+        "on-error-container": "#93000a",
+        "error-container": "#ffdad6",
+        "on-primary": "#ffffff",
+        "tertiary-container": "#001a42",
+        "tertiary-fixed": "#d8e2ff",
+        "surface-tint": "#565e74",
+        "surface-bright": "#f7f9fb",
+        "primary-container": "#131b2e",
+        "on-secondary": "#ffffff",
+        "inverse-on-surface": "#eff1f3",
+        "outline": "#76777d",
+        "primary-fixed": "#dae2fd",
+        "on-secondary-container": "#57657b",
+        "secondary": "#515f74",
+        "on-tertiary-container": "#3980f4",
+        "surface": "#f7f9fb",
+        "on-surface-variant": "#45464d",
+        "secondary-container": "#d5e3fd",
+        "inverse-primary": "#bec6e0",
+        "on-error": "#ffffff",
+        "secondary-fixed": "#d5e3fd",
+        "error": "#ba1a1a",
+        "on-secondary-fixed": "#0d1c2f",
+        "on-background": "#191c1e"
+      },
+      "fonts": [
+        "Material Symbols Outlined",
+        "Inter",
+        "JetBrains Mono"
+      ],
+      "layoutHints": {
+        "flexDirection": "col"
+      },
+      "behaviorContract": [
+        {
+          "kind": "link",
+          "label": "Operations",
+          "icon": "clinical_notes",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Triage Board",
+          "icon": "dashboard",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "icon": "settings",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "icon": "help",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "button",
+          "label": "Patient",
+          "icon": "add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "menu",
+          "icon": "menu",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "notifications",
+          "icon": "notifications",
+          "action": "navigate",
+          "route": "/notifications",
+          "expectedBehavior": "navigate:/notifications"
+        },
+        {
+          "kind": "button",
+          "label": "history",
+          "icon": "history",
+          "action": "navigate",
+          "route": "/history",
+          "expectedBehavior": "navigate:/history"
+        },
+        {
+          "kind": "button",
+          "label": "account_circle",
+          "icon": "account_circle",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Retry Load",
+          "icon": "refresh",
+          "action": "retry",
+          "expectedBehavior": "retry the failed action and show loading/error feedback"
+        },
+        {
+          "kind": "button",
+          "label": "Create Patient",
+          "icon": "person_add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Clear All Filters",
+          "icon": "clear_all",
+          "action": "search",
+          "expectedBehavior": "filter/search visible results from input/query"
+        },
+        {
+          "kind": "button",
+          "label": "ClinicPulse Emergency Triage",
+          "icon": "monitor_heart",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "input",
+          "label": "Search Patients...",
+          "type": "text",
+          "placeholder": "Search Patients...",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "tabBar": [
+        {
+          "kind": "button",
+          "label": "ClinicPulse Emergency Triage",
+          "icon": "monitor_heart",
+          "active": true
+        },
+        {
+          "kind": "button",
+          "label": "Patient",
+          "icon": "add",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Operations",
+          "icon": "clinical_notes",
+          "route": "#",
+          "active": false
+        },
+        {
+          "kind": "link",
+          "label": "Triage Board",
+          "icon": "dashboard",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "icon": "settings",
+          "route": "#",
+          "active": false
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "icon": "help",
+          "route": "#",
+          "active": false
+        }
+      ],
+      "title": "Empty and Error Recovery - ClinicPulse Triage"
+    },
+    "bd7684e6d77047d0be92756ab6fc430e": {
+      "screenId": "bd7684e6d77047d0be92756ab6fc430e",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "nav",
+          "layout": "block",
+          "classes": [
+            "bg-surface-container-low",
+            "dark:bg-surface-container-low",
+            "docked",
+            "left-0",
+            "h-full",
+            "w-[240px]",
+            "border-r",
+            "border-outline-variant",
+            "dark:border-outline-variant",
+            "flat"
+          ],
+          "childCount": 6
+        },
+        {
+          "tag": "header",
+          "layout": "block",
+          "classes": [
+            "bg-surface",
+            "dark:bg-surface",
+            "docked",
+            "top-0",
+            "w-full",
+            "border-b",
+            "border-outline-variant",
+            "dark:border-outline-variant",
+            "flat",
+            "no"
+          ],
+          "childCount": 4
+        },
+        {
+          "tag": "main",
+          "layout": "flex-row",
+          "classes": [
+            "flex-1",
+            "overflow-x-auto",
+            "overflow-y-hidden",
+            "p-margin-desktop",
+            "bg-surface-bright"
+          ],
+          "childCount": 31
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "Add Patient",
+          "classes": [
+            "w-full",
+            "bg-primary",
+            "text-on-primary",
+            "py-compact",
+            "rounded",
+            "font-label-bold",
+            "text-label-bold",
+            "mb-relaxed",
+            "hover:bg-inverse-surface",
+            "transition-colors",
+            "duration-200"
+          ],
+          "icon": null,
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "notifications",
+          "classes": [
+            "p-compact",
+            "rounded",
+            "hover:bg-surface-container-low",
+            "dark:hover:bg-surface-container-low",
+            "transition-all",
+            "duration-150",
+            "text-on-surface-variant"
+          ],
+          "icon": "notifications",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/notifications",
+          "expectedRoute": "/notifications",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "history",
+          "classes": [
+            "p-compact",
+            "rounded",
+            "hover:bg-surface-container-low",
+            "dark:hover:bg-surface-container-low",
+            "transition-all",
+            "duration-150",
+            "text-on-surface-variant"
+          ],
+          "icon": "history",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/history",
+          "expectedRoute": "/history",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "account_circle",
+          "classes": [
+            "p-compact",
+            "rounded",
+            "hover:bg-surface-container-low",
+            "dark:hover:bg-surface-container-low",
+            "transition-all",
+            "duration-150",
+            "text-on-surface-variant"
+          ],
+          "icon": "account_circle",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Assign Room",
+          "classes": [
+            "flex-1",
+            "text-center",
+            "py-1",
+            "bg-surface-container",
+            "text-on-surface",
+            "font-label-bold",
+            "text-[11px]",
+            "rounded",
+            "hover:bg-surface-container-high",
+            "transition-colors"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "edit_note",
+          "classes": [
+            "px-2",
+            "py-1",
+            "bg-surface-container",
+            "text-on-surface",
+            "rounded",
+            "hover:bg-surface-container-high",
+            "transition-colors"
+          ],
+          "icon": "edit_note",
+          "action": "edit",
+          "expectedBehavior": "open edit flow or update selected item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Check Labs",
+          "classes": [
+            "flex-1",
+            "text-center",
+            "py-1",
+            "bg-surface-container",
+            "text-on-surface",
+            "font-label-bold",
+            "text-[11px]",
+            "rounded",
+            "hover:bg-surface-container-high",
+            "transition-colors"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "ClinicPulse Emergency Triage",
+          "classes": [],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "input",
+          "type": "text",
+          "label": "Search patients...",
+          "placeholder": "Search patients...",
+          "name": "",
+          "classes": [
+            "w-full",
+            "bg-surface-container-lowest",
+            "border",
+            "border-outline-variant",
+            "rounded",
+            "py-[6px]",
+            "pl-8",
+            "pr-compact",
+            "font-body-sm",
+            "text-body-sm",
+            "text-on-surface",
+            "focus:outline-none",
+            "focus:border-primary",
+            "transition-colors",
+            "focus:ring-0"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "navLinks": [
+        {
+          "kind": "link",
+          "label": "Operations",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "clinical_notes",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Triage Board",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "dashboard",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "settings",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "help",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "clinical_notes",
+        "dashboard",
+        "settings",
+        "help",
+        "search",
+        "notifications",
+        "history",
+        "account_circle",
+        "warning",
+        "edit_note",
+        "inbox"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuAhmxCeyQ5Y0kKD4BvBT4-xbmG63dvSk5liDYs5EwmlOtEyVRHhKg8Vk4sq0-Y-0tsaHx-fr-w_LdiorD5qiDxODWntIQrBWQfHn8ltgt_HSr-dP7t4maHxDVCyJwZXQnCLkG4QFcMgTMO8rY0qeg",
+          "alt": "Clinician Profile"
+        }
+      ],
+      "cssVars": {},
+      "colorPalette": {
+        "on-surface": "#191c1e",
+        "tertiary-fixed-dim": "#adc6ff",
+        "on-secondary-fixed-variant": "#3a485c",
+        "background": "#f7f9fb",
+        "on-primary-fixed-variant": "#3f465c",
+        "surface-container-lowest": "#ffffff",
+        "on-primary-fixed": "#131b2e",
+        "on-primary-container": "#7c839b",
+        "on-tertiary": "#ffffff",
+        "primary": "#000000",
+        "outline-variant": "#c6c6cd",
+        "surface-container-highest": "#e0e3e5",
+        "on-tertiary-fixed-variant": "#004395",
+        "surface-variant": "#e0e3e5",
+        "tertiary": "#000000",
+        "surface-dim": "#d8dadc",
+        "on-tertiary-fixed": "#001a42",
+        "inverse-surface": "#2d3133",
+        "surface-container": "#eceef0",
+        "surface-container-high": "#e6e8ea",
+        "surface-container-low": "#f2f4f6",
+        "secondary-fixed-dim": "#b9c7e0",
+        "primary-fixed-dim": "#bec6e0",
+        "on-error-container": "#93000a",
+        "error-container": "#ffdad6",
+        "on-primary": "#ffffff",
+        "tertiary-container": "#001a42",
+        "tertiary-fixed": "#d8e2ff",
+        "surface-tint": "#565e74",
+        "surface-bright": "#f7f9fb",
+        "primary-container": "#131b2e",
+        "on-secondary": "#ffffff",
+        "inverse-on-surface": "#eff1f3",
+        "outline": "#76777d",
+        "primary-fixed": "#dae2fd",
+        "on-secondary-container": "#57657b",
+        "secondary": "#515f74",
+        "on-tertiary-container": "#3980f4",
+        "surface": "#f7f9fb",
+        "on-surface-variant": "#45464d",
+        "secondary-container": "#d5e3fd",
+        "inverse-primary": "#bec6e0",
+        "on-error": "#ffffff",
+        "secondary-fixed": "#d5e3fd",
+        "error": "#ba1a1a",
+        "on-secondary-fixed": "#0d1c2f",
+        "on-background": "#191c1e"
+      },
+      "fonts": [
+        "Material Symbols Outlined",
+        "Inter",
+        "JetBrains Mono"
+      ],
+      "layoutHints": {
+        "flexDirection": "col"
+      },
+      "behaviorContract": [
+        {
+          "kind": "link",
+          "label": "Operations",
+          "icon": "clinical_notes",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Triage Board",
+          "icon": "dashboard",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "icon": "settings",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "icon": "help",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "button",
+          "label": "Add Patient",
+          "icon": null,
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "notifications",
+          "icon": "notifications",
+          "action": "navigate",
+          "route": "/notifications",
+          "expectedBehavior": "navigate:/notifications"
+        },
+        {
+          "kind": "button",
+          "label": "history",
+          "icon": "history",
+          "action": "navigate",
+          "route": "/history",
+          "expectedBehavior": "navigate:/history"
+        },
+        {
+          "kind": "button",
+          "label": "account_circle",
+          "icon": "account_circle",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Assign Room",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "edit_note",
+          "icon": "edit_note",
+          "action": "edit",
+          "expectedBehavior": "open edit flow or update selected item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Check Labs",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "ClinicPulse Emergency Triage",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "input",
+          "label": "Search patients...",
+          "type": "text",
+          "placeholder": "Search patients...",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "tabBar": [
+        {
+          "kind": "button",
+          "label": "ClinicPulse Emergency Triage",
+          "icon": null,
+          "active": false
+        },
+        {
+          "kind": "button",
+          "label": "Add Patient",
+          "icon": null,
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Operations",
+          "icon": "clinical_notes",
+          "route": "#",
+          "active": false
+        },
+        {
+          "kind": "link",
+          "label": "Triage Board",
+          "icon": "dashboard",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "icon": "settings",
+          "route": "#",
+          "active": false
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "icon": "help",
+          "route": "#",
+          "active": false
+        }
+      ],
+      "title": "Triage Board - ClinicPulse Triage"
+    },
+    "fda159b721674f30b56ba6bab4e6c183": {
+      "screenId": "fda159b721674f30b56ba6bab4e6c183",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "aside",
+          "layout": "flex-row",
+          "classes": [
+            "fixed",
+            "left-0",
+            "top-0",
+            "h-full",
+            "w-[240px]",
+            "z-30",
+            "bg-surface-container-low",
+            "border-r",
+            "border-outline-variant",
+            "flex"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "header",
+          "layout": "flex-row",
+          "classes": [
+            "fixed",
+            "top-0",
+            "w-[calc(100%-240px)]",
+            "z-20",
+            "bg-surface",
+            "border-b",
+            "border-outline-variant",
+            "flex",
+            "justify-between",
+            "items-center"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "main",
+          "layout": "flex-col",
+          "classes": [
+            "flex-1",
+            "mt-12",
+            "p-margin-desktop",
+            "overflow-y-auto",
+            "overflow-x-hidden",
+            "flex",
+            "flex-col",
+            "gap-margin-desktop",
+            "relative"
+          ],
+          "childCount": 20
+        },
+        {
+          "tag": "aside",
+          "layout": "absolute",
+          "classes": [
+            "fixed",
+            "right-0",
+            "top-0",
+            "h-screen",
+            "w-[480px]",
+            "bg-surface",
+            "border-l",
+            "border-outline-variant",
+            "shadow-[-4px_0_12px_rgba(0,0,0,0.05)]",
+            "z-40"
+          ],
+          "childCount": 24
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "Patient",
+          "classes": [
+            "w-full",
+            "bg-primary",
+            "text-on-primary",
+            "py-compact",
+            "px-default",
+            "rounded",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-compact",
+            "font-label-md",
+            "text-label-md",
+            "hover:opacity-90",
+            "transition-opacity"
+          ],
+          "icon": "add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "notifications",
+          "classes": [
+            "p-compact",
+            "text-on-surface-variant",
+            "hover:bg-surface-container-low",
+            "rounded-full",
+            "transition-colors",
+            "flex",
+            "items-center",
+            "justify-center"
+          ],
+          "icon": "notifications",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/notifications",
+          "expectedRoute": "/notifications",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "history",
+          "classes": [
+            "p-compact",
+            "text-on-surface-variant",
+            "hover:bg-surface-container-low",
+            "rounded-full",
+            "transition-colors",
+            "flex",
+            "items-center",
+            "justify-center"
+          ],
+          "icon": "history",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/history",
+          "expectedRoute": "/history",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "account_circle",
+          "classes": [
+            "p-compact",
+            "text-on-surface-variant",
+            "hover:bg-surface-container-low",
+            "rounded-full",
+            "transition-colors",
+            "flex",
+            "items-center",
+            "justify-center"
+          ],
+          "icon": "account_circle",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Retry Load",
+          "classes": [
+            "flex",
+            "items-center",
+            "gap-base",
+            "text-secondary",
+            "font-label-md",
+            "text-label-md",
+            "hover:bg-surface-container-low",
+            "px-compact",
+            "py-[4px]",
+            "rounded",
+            "border",
+            "border-outline-variant",
+            "transition-colors"
+          ],
+          "icon": "refresh",
+          "action": "retry",
+          "expectedBehavior": "retry the failed action and show loading/error feedback"
+        },
+        {
+          "kind": "button",
+          "label": "close",
+          "classes": [
+            "text-on-surface-variant",
+            "hover:bg-surface-container-low",
+            "p-1",
+            "rounded",
+            "transition-colors"
+          ],
+          "icon": "close",
+          "action": "dismiss",
+          "expectedBehavior": "close dialog/panel or return to previous state"
+        },
+        {
+          "kind": "button",
+          "label": "View Full Record",
+          "classes": [
+            "px-default",
+            "py-compact",
+            "font-label-md",
+            "text-label-md",
+            "border",
+            "border-outline-variant",
+            "text-on-surface",
+            "rounded",
+            "hover:bg-surface-container-low",
+            "transition-colors"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Assign Room",
+          "classes": [
+            "px-default",
+            "py-compact",
+            "font-label-md",
+            "text-label-md",
+            "bg-primary",
+            "text-on-primary",
+            "rounded",
+            "hover:opacity-90",
+            "transition-opacity"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "input",
+          "type": "text",
+          "label": "Search patients, IDs...",
+          "placeholder": "Search patients, IDs...",
+          "name": "",
+          "classes": [
+            "w-full",
+            "bg-surface-container-low",
+            "border",
+            "border-outline-variant",
+            "text-on-surface",
+            "font-body-sm",
+            "text-body-sm",
+            "rounded",
+            "pl-[32px]",
+            "pr-compact",
+            "py-[4px]",
+            "focus:outline-none",
+            "focus:border-primary",
+            "focus:ring-1",
+            "focus:ring-primary",
+            "transition-shadow"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "select",
+          "label": "select",
+          "placeholder": "",
+          "name": "",
+          "classes": [
+            "bg-transparent",
+            "border-b",
+            "border-outline-variant",
+            "pb-1",
+            "font-body-sm",
+            "text-body-sm",
+            "text-on-surface",
+            "focus:outline-none",
+            "focus:border-primary",
+            "cursor-pointer",
+            "pr-6"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "navLinks": [
+        {
+          "kind": "link",
+          "label": "Operations",
+          "href": "#",
+          "classes": [
+            "material-symbols-outlined"
+          ],
+          "icon": "clinical_notes",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Triage Board",
+          "href": "#",
+          "classes": [
+            "material-symbols-outlined"
+          ],
+          "icon": "dashboard",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "href": "#",
+          "classes": [
+            "material-symbols-outlined"
+          ],
+          "icon": "settings",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "href": "#",
+          "classes": [
+            "material-symbols-outlined"
+          ],
+          "icon": "help",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "add",
+        "clinical_notes",
+        "dashboard",
+        "settings",
+        "help",
+        "search",
+        "notifications",
+        "history",
+        "account_circle",
+        "update",
+        "refresh",
+        "check_circle",
+        "pending",
+        "close",
+        "edit",
+        "check"
+      ],
+      "images": [],
+      "cssVars": {},
+      "colorPalette": {
+        "on-surface": "#191c1e",
+        "tertiary-fixed-dim": "#adc6ff",
+        "on-secondary-fixed-variant": "#3a485c",
+        "background": "#f7f9fb",
+        "on-primary-fixed-variant": "#3f465c",
+        "surface-container-lowest": "#ffffff",
+        "on-primary-fixed": "#131b2e",
+        "on-primary-container": "#7c839b",
+        "on-tertiary": "#ffffff",
+        "primary": "#000000",
+        "outline-variant": "#c6c6cd",
+        "surface-container-highest": "#e0e3e5",
+        "on-tertiary-fixed-variant": "#004395",
+        "surface-variant": "#e0e3e5",
+        "tertiary": "#000000",
+        "surface-dim": "#d8dadc",
+        "on-tertiary-fixed": "#001a42",
+        "inverse-surface": "#2d3133",
+        "surface-container": "#eceef0",
+        "surface-container-high": "#e6e8ea",
+        "surface-container-low": "#f2f4f6",
+        "secondary-fixed-dim": "#b9c7e0",
+        "primary-fixed-dim": "#bec6e0",
+        "on-error-container": "#93000a",
+        "error-container": "#ffdad6",
+        "on-primary": "#ffffff",
+        "tertiary-container": "#001a42",
+        "tertiary-fixed": "#d8e2ff",
+        "surface-tint": "#565e74",
+        "surface-bright": "#f7f9fb",
+        "primary-container": "#131b2e",
+        "on-secondary": "#ffffff",
+        "inverse-on-surface": "#eff1f3",
+        "outline": "#76777d",
+        "primary-fixed": "#dae2fd",
+        "on-secondary-container": "#57657b",
+        "secondary": "#515f74",
+        "on-tertiary-container": "#3980f4",
+        "surface": "#f7f9fb",
+        "on-surface-variant": "#45464d",
+        "secondary-container": "#d5e3fd",
+        "inverse-primary": "#bec6e0",
+        "on-error": "#ffffff",
+        "secondary-fixed": "#d5e3fd",
+        "error": "#ba1a1a",
+        "on-secondary-fixed": "#0d1c2f",
+        "on-background": "#191c1e"
+      },
+      "fonts": [
+        "Material Symbols Outlined",
+        "Inter",
+        "JetBrains Mono"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "1"
+      },
+      "behaviorContract": [
+        {
+          "kind": "link",
+          "label": "Operations",
+          "icon": "clinical_notes",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Triage Board",
+          "icon": "dashboard",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "settings",
+          "icon": "settings",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "icon": "help",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "button",
+          "label": "Patient",
+          "icon": "add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "notifications",
+          "icon": "notifications",
+          "action": "navigate",
+          "route": "/notifications",
+          "expectedBehavior": "navigate:/notifications"
+        },
+        {
+          "kind": "button",
+          "label": "history",
+          "icon": "history",
+          "action": "navigate",
+          "route": "/history",
+          "expectedBehavior": "navigate:/history"
+        },
+        {
+          "kind": "button",
+          "label": "account_circle",
+          "icon": "account_circle",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Retry Load",
+          "icon": "refresh",
+          "action": "retry",
+          "expectedBehavior": "retry the failed action and show loading/error feedback"
+        },
+        {
+          "kind": "button",
+          "label": "close",
+          "icon": "close",
+          "action": "dismiss",
+          "expectedBehavior": "close dialog/panel or return to previous state"
+        },
+        {
+          "kind": "button",
+          "label": "View Full Record",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Assign Room",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "input",
+          "label": "Search patients, IDs...",
+          "type": "text",
+          "placeholder": "Search patients, IDs...",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "select",
+          "type": "select",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "tabBar": [
+        {
+          "kind": "link",
+          "label": "Operations",
+          "icon": "clinical_notes",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Triage Board",
+          "icon": "dashboard",
+          "route": "#",
+          "active": false
+        }
+      ],
+      "title": "Patient Operations - ClinicPulse Triage"
+    }
+  }
+}
