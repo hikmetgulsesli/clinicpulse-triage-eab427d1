@@ -66,7 +66,7 @@ export function getClinicPulseCounts(records: ClinicPulsePatientRecord[]): Clini
 export function buildClinicPulseState(
   partial: Partial<Omit<ClinicPulseAppState, 'counts' | 'selectedRecord'>> = {},
 ): ClinicPulseAppState {
-  const records = (partial.records?.length ? partial.records : clinicPulseTriageFixture).map(normalizeClinicPulseRecord);
+  const records = (partial.records ?? clinicPulseTriageFixture).map(normalizeClinicPulseRecord);
   const selectedRecordId = partial.selectedRecordId ?? records[0]?.id ?? null;
   const selectedRecord = records.find((record) => record.id === selectedRecordId) ?? records[0] ?? null;
   const route = partial.route ?? 'triage-board';
