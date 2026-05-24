@@ -1,0 +1,37 @@
+import type { ClinicPulsePatientRecord } from '../features/clinicpulse-triage/clinicpulse-triage.store';
+
+export const clinicPulseTriageFixture: ClinicPulsePatientRecord[] = [
+  {
+    id: 'patient-1024',
+    name: 'Maya Chen',
+    age: 42,
+    chiefComplaint: 'Chest tightness and shortness of breath',
+    acuity: 'emergent',
+    room: 'Trauma 2',
+    status: 'roomed',
+    labsPending: 2,
+    updatedAt: '2026-05-24T19:20:00.000Z',
+  },
+  {
+    id: 'patient-1031',
+    name: 'Owen Patel',
+    age: 31,
+    chiefComplaint: 'Fever with abdominal pain',
+    acuity: 'urgent',
+    room: null,
+    status: 'waiting',
+    labsPending: 1,
+    updatedAt: '2026-05-24T19:36:00.000Z',
+  },
+  {
+    id: 'patient-1042',
+    name: 'Elena Brooks',
+    age: 68,
+    chiefComplaint: 'Dizziness after fall',
+    acuity: 'standard',
+    room: 'Exam 5',
+    status: 'observing',
+    labsPending: 0,
+    updatedAt: '2026-05-24T19:41:00.000Z',
+  },
+];
