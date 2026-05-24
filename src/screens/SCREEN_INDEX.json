@@ -1,0 +1,350 @@
+[
+  {
+    "screenId": "ba560c97a33d4630aa209a99e1719cde",
+    "title": "Empty and Error Recovery - ClinicPulse Triage",
+    "componentName": "EmptyAndErrorRecoveryClinicpulseTriage",
+    "file": "src/screens/EmptyAndErrorRecoveryClinicpulseTriage.tsx",
+    "buttons": 8,
+    "inputs": 1,
+    "links": 4,
+    "actions": [
+      {
+        "id": "add-patient-1",
+        "kind": "button",
+        "label": "Add Patient",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "button-4-4",
+        "kind": "button",
+        "label": "Button 4",
+        "index": 3
+      },
+      {
+        "id": "button-5-5",
+        "kind": "button",
+        "label": "Button 5",
+        "index": 4
+      },
+      {
+        "id": "retry-load-6",
+        "kind": "button",
+        "label": "Retry Load",
+        "index": 5
+      },
+      {
+        "id": "create-patient-7",
+        "kind": "button",
+        "label": "Create Patient",
+        "index": 6
+      },
+      {
+        "id": "clear-all-filters-8",
+        "kind": "button",
+        "label": "Clear All Filters",
+        "index": 7
+      },
+      {
+        "id": "operations-1",
+        "kind": "link",
+        "label": "Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "triage-board-2",
+        "kind": "link",
+        "label": "Triage Board",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "settings-3",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "support-4",
+        "kind": "link",
+        "label": "Support",
+        "href": "#",
+        "index": 3
+      }
+    ]
+  },
+  {
+    "screenId": "5a395a3ed8574b94bd9190449e9603b5",
+    "title": "Patient Editor - ClinicPulse Triage",
+    "componentName": "PatientEditorClinicpulseTriage",
+    "file": "src/screens/PatientEditorClinicpulseTriage.tsx",
+    "buttons": 8,
+    "inputs": 7,
+    "links": 4,
+    "actions": [
+      {
+        "id": "add-patient-1",
+        "kind": "button",
+        "label": "Add Patient",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "button-4-4",
+        "kind": "button",
+        "label": "Button 4",
+        "index": 3
+      },
+      {
+        "id": "button-5-5",
+        "kind": "button",
+        "label": "Button 5",
+        "index": 4
+      },
+      {
+        "id": "save-now-6",
+        "kind": "button",
+        "label": "Save Now",
+        "index": 5
+      },
+      {
+        "id": "cancel-edit-7",
+        "kind": "button",
+        "label": "Cancel Edit",
+        "index": 6
+      },
+      {
+        "id": "save-record-8",
+        "kind": "button",
+        "label": "Save Record",
+        "index": 7
+      },
+      {
+        "id": "operations-1",
+        "kind": "link",
+        "label": "Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "triage-board-2",
+        "kind": "link",
+        "label": "Triage Board",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "settings-3",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "support-4",
+        "kind": "link",
+        "label": "Support",
+        "href": "#",
+        "index": 3
+      }
+    ]
+  },
+  {
+    "screenId": "bd7684e6d77047d0be92756ab6fc430e",
+    "title": "Triage Board - ClinicPulse Triage",
+    "componentName": "TriageBoardClinicpulseTriage",
+    "file": "src/screens/TriageBoardClinicpulseTriage.tsx",
+    "buttons": 8,
+    "inputs": 1,
+    "links": 4,
+    "actions": [
+      {
+        "id": "add-patient-1",
+        "kind": "button",
+        "label": "Add Patient",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "button-4-4",
+        "kind": "button",
+        "label": "Button 4",
+        "index": 3
+      },
+      {
+        "id": "assign-room-5",
+        "kind": "button",
+        "label": "Assign Room",
+        "index": 4
+      },
+      {
+        "id": "button-6-6",
+        "kind": "button",
+        "label": "Button 6",
+        "index": 5
+      },
+      {
+        "id": "check-labs-7",
+        "kind": "button",
+        "label": "Check Labs",
+        "index": 6
+      },
+      {
+        "id": "button-8-8",
+        "kind": "button",
+        "label": "Button 8",
+        "index": 7
+      },
+      {
+        "id": "operations-1",
+        "kind": "link",
+        "label": "Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "triage-board-2",
+        "kind": "link",
+        "label": "Triage Board",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "settings-3",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "support-4",
+        "kind": "link",
+        "label": "Support",
+        "href": "#",
+        "index": 3
+      }
+    ]
+  },
+  {
+    "screenId": "fda159b721674f30b56ba6bab4e6c183",
+    "title": "Patient Operations - ClinicPulse Triage",
+    "componentName": "PatientOperationsClinicpulseTriage",
+    "file": "src/screens/PatientOperationsClinicpulseTriage.tsx",
+    "buttons": 8,
+    "inputs": 1,
+    "links": 4,
+    "actions": [
+      {
+        "id": "add-patient-1",
+        "kind": "button",
+        "label": "Add Patient",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "button-4-4",
+        "kind": "button",
+        "label": "Button 4",
+        "index": 3
+      },
+      {
+        "id": "retry-load-5",
+        "kind": "button",
+        "label": "Retry Load",
+        "index": 4
+      },
+      {
+        "id": "button-6-6",
+        "kind": "button",
+        "label": "Button 6",
+        "index": 5
+      },
+      {
+        "id": "view-full-record-7",
+        "kind": "button",
+        "label": "View Full Record",
+        "index": 6
+      },
+      {
+        "id": "assign-room-8",
+        "kind": "button",
+        "label": "Assign Room",
+        "index": 7
+      },
+      {
+        "id": "operations-1",
+        "kind": "link",
+        "label": "Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "triage-board-2",
+        "kind": "link",
+        "label": "Triage Board",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "settings-3",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "support-4",
+        "kind": "link",
+        "label": "Support",
+        "href": "#",
+        "index": 3
+      }
+    ]
+  }
+]
