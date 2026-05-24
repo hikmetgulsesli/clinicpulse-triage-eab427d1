@@ -33,7 +33,6 @@ export function loadClinicPulseState(storage: Storage | undefined = getStorage()
       state: buildClinicPulseState({
         records: Array.isArray(persisted.records) ? persisted.records : undefined,
         route: persisted.route,
-        activeScreen: persisted.route,
         selectedRecordId: persisted.selectedRecordId ?? undefined,
         activePanel: persisted.activePanel,
         storageStatus: 'ready',

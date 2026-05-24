@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
+import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import {
   EmptyAndErrorRecoveryClinicpulseTriage,
   PatientEditorClinicpulseTriage,
@@ -21,30 +21,18 @@ import { loadClinicPulseState, saveClinicPulseState } from './features/clinicpul
 import './test/bridge';
 
 const initialState = buildClinicPulseState();
+const currentTimestamp = () => new Date().toISOString();
+const loadInitialClinicPulseState = () => loadClinicPulseState().state;
 
 export default function App() {
-  const [state, dispatch] = useReducer(clinicPulseReducer, initialState);
-  const [isHydrated, setIsHydrated] = useState(false);
+  const [state, dispatch] = useReducer(clinicPulseReducer, initialState, loadInitialClinicPulseState);
 
   useEffect(() => {
-    const result = loadClinicPulseState();
-    dispatch({
-      type: 'hydrate',
-      state: result.state,
-      storageStatus: result.recovered ? 'recoverable-error' : result.state.storageStatus,
-      lastError: result.error,
-    });
-    setIsHydrated(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isHydrated) return;
-
     const saved = saveClinicPulseState(state);
     if (!saved && state.storageStatus !== 'unavailable') {
       dispatch({ type: 'set-storage-status', storageStatus: 'unavailable' });
     }
-  }, [isHydrated, state]);
+  }, [state]);
 
   const navigate = useCallback((route: ClinicPulseRoute, panel?: ClinicPulsePanel) => {
     dispatch({ type: 'navigate', route, panel });
@@ -56,7 +44,7 @@ export default function App() {
       'button-2-2': () => navigate('operations', 'operations'),
       'button-3-3': () => navigate('triage-board', 'board'),
       'button-4-4': () => navigate('empty-recovery', 'support'),
-      'button-5-5': () => dispatch({ type: 'advance-priority' }),
+      'button-5-5': () => dispatch({ type: 'advance-priority', updatedAt: currentTimestamp() }),
       'operations-1': () => navigate('operations', 'operations'),
       'triage-board-2': () => navigate('triage-board', 'board'),
       'settings-3': () => navigate('triage-board', 'settings'),
@@ -68,10 +56,10 @@ export default function App() {
   const boardActions = useMemo<Partial<Record<TriageBoardClinicpulseTriageActionId, () => void>>>(
     () => ({
       ...commonActions,
-      'assign-room-5': () => dispatch({ type: 'assign-room' }),
-      'button-6-6': () => dispatch({ type: 'toggle-consent' }),
-      'check-labs-7': () => dispatch({ type: 'check-labs' }),
-      'button-8-8': () => dispatch({ type: 'handoff-note' }),
+      'assign-room-5': () => dispatch({ type: 'assign-room', updatedAt: currentTimestamp() }),
+      'button-6-6': () => dispatch({ type: 'toggle-consent', updatedAt: currentTimestamp() }),
+      'check-labs-7': () => dispatch({ type: 'check-labs', updatedAt: currentTimestamp() }),
+      'button-8-8': () => dispatch({ type: 'handoff-note', updatedAt: currentTimestamp() }),
     }),
     [commonActions],
   );
@@ -80,9 +68,9 @@ export default function App() {
     () => ({
       ...commonActions,
       'retry-load-5': () => dispatch({ type: 'reset-records' }),
-      'button-6-6': () => dispatch({ type: 'toggle-consent' }),
+      'button-6-6': () => dispatch({ type: 'toggle-consent', updatedAt: currentTimestamp() }),
       'view-full-record-7': () => navigate('patient-editor', 'editor'),
-      'assign-room-8': () => dispatch({ type: 'assign-room' }),
+      'assign-room-8': () => dispatch({ type: 'assign-room', updatedAt: currentTimestamp() }),
     }),
     [commonActions, navigate],
   );

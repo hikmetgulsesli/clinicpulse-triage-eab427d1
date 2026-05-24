@@ -29,7 +29,6 @@ export interface ClinicPulseCounts {
 }
 
 export interface ClinicPulseAppState {
-  activeScreen: ClinicPulseRoute;
   route: ClinicPulseRoute;
   selectedRecordId: string | null;
   selectedRecord: ClinicPulsePatientRecord | null;
@@ -70,10 +69,9 @@ export function buildClinicPulseState(
   const records = (partial.records?.length ? partial.records : clinicPulseTriageFixture).map(normalizeClinicPulseRecord);
   const selectedRecordId = partial.selectedRecordId ?? records[0]?.id ?? null;
   const selectedRecord = records.find((record) => record.id === selectedRecordId) ?? records[0] ?? null;
-  const route = partial.route ?? partial.activeScreen ?? 'triage-board';
+  const route = partial.route ?? 'triage-board';
 
   return {
-    activeScreen: partial.activeScreen ?? route,
     route,
     selectedRecordId: selectedRecord?.id ?? null,
     selectedRecord,
@@ -101,7 +99,7 @@ export function panelForRoute(route: ClinicPulseRoute): ClinicPulsePanel {
 
 export function toClinicPulseSnapshot(state: ClinicPulseAppState): ClinicPulseSnapshot {
   return {
-    activeScreen: state.activeScreen,
+    activeScreen: state.route,
     route: state.route,
     selectedRecord: state.selectedRecord,
     counts: state.counts,
@@ -112,29 +110,21 @@ export function toClinicPulseSnapshot(state: ClinicPulseAppState): ClinicPulseSn
 }
 
 export type ClinicPulseAction =
-  | { type: 'hydrate'; state: ClinicPulseAppState; storageStatus: ClinicPulseStorageStatus; lastError?: string | null }
   | { type: 'navigate'; route: ClinicPulseRoute; panel?: ClinicPulsePanel }
   | { type: 'select-record'; recordId: string | null }
-  | { type: 'assign-room' }
-  | { type: 'check-labs' }
-  | { type: 'advance-priority' }
-  | { type: 'toggle-consent' }
-  | { type: 'handoff-note' }
+  | { type: 'assign-room'; updatedAt: string }
+  | { type: 'check-labs'; updatedAt: string }
+  | { type: 'advance-priority'; updatedAt: string }
+  | { type: 'toggle-consent'; updatedAt: string }
+  | { type: 'handoff-note'; updatedAt: string }
   | { type: 'set-storage-status'; storageStatus: ClinicPulseStorageStatus; lastError?: string | null }
   | { type: 'reset-records' };
 
 export function clinicPulseReducer(state: ClinicPulseAppState, action: ClinicPulseAction): ClinicPulseAppState {
   switch (action.type) {
-    case 'hydrate':
-      return buildClinicPulseState({
-        ...action.state,
-        storageStatus: action.storageStatus,
-        lastError: action.lastError ?? null,
-      });
     case 'navigate':
       return buildClinicPulseState({
         ...state,
-        activeScreen: action.route,
         route: action.route,
         activePanel: action.panel ?? panelForRoute(action.route),
       });
@@ -145,25 +135,25 @@ export function clinicPulseReducer(state: ClinicPulseAppState, action: ClinicPul
         ...record,
         room: record.room ?? 'Fast Track 1',
         status: 'roomed',
-        updatedAt: new Date().toISOString(),
+        updatedAt: action.updatedAt,
       }));
     case 'check-labs':
       return updateSelectedRecord(state, (record) => ({
         ...record,
         labsPending: Math.max(0, record.labsPending - 1),
-        updatedAt: new Date().toISOString(),
+        updatedAt: action.updatedAt,
       }));
     case 'advance-priority':
       return updateSelectedRecord(state, (record) => ({
         ...record,
         acuity: record.acuity === 'standard' ? 'urgent' : 'emergent',
-        updatedAt: new Date().toISOString(),
+        updatedAt: action.updatedAt,
       }));
     case 'toggle-consent':
       return updateSelectedRecord(state, (record) => ({
         ...record,
         consentMissing: !record.consentMissing,
-        updatedAt: new Date().toISOString(),
+        updatedAt: action.updatedAt,
       }));
     case 'handoff-note':
       return updateSelectedRecord(state, (record) => ({
@@ -171,7 +161,7 @@ export function clinicPulseReducer(state: ClinicPulseAppState, action: ClinicPul
         handoffNote: record.handoffNote.includes('Charge nurse review')
           ? 'Handoff note updated for room team.'
           : 'Charge nurse review requested before room transfer.',
-        updatedAt: new Date().toISOString(),
+        updatedAt: action.updatedAt,
       }));
     case 'set-storage-status':
       return { ...state, storageStatus: action.storageStatus, lastError: action.lastError ?? null };
