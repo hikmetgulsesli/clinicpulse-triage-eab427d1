@@ -90,10 +90,10 @@ export function TriageBoardClinicpulseTriage({ actions }: TriageBoardClinicpulse
       </div>
       </header>
       {/* Kanban Board Area */}
-      <main className="flex-1 overflow-x-auto overflow-y-hidden p-margin-desktop bg-surface-bright">
-      <div className="flex space-x-gutter h-full min-w-max pb-default">
+      <main className="flex-1 overflow-x-hidden overflow-y-auto p-compact md:p-margin-desktop bg-surface-bright">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter h-auto min-h-full pb-default">
       {/* Urgent Lane */}
-      <div className="w-[320px] flex flex-col h-full bg-surface-container-lowest border border-outline-variant rounded-lg shrink-0">
+      <div className="w-full min-w-0 flex flex-col min-h-[320px] md:h-full bg-surface-container-lowest border border-outline-variant rounded-lg">
       <div className="p-compact border-b border-outline-variant bg-[#fff5f5] rounded-t-lg flex justify-between items-center">
       <div className="flex items-center">
       <span className="w-2 h-2 rounded-full bg-error mr-compact"></span>
@@ -126,7 +126,7 @@ export function TriageBoardClinicpulseTriage({ actions }: TriageBoardClinicpulse
       </div>
       </div>
       {/* High Lane */}
-      <div className="w-[320px] flex flex-col h-full bg-surface-container-lowest border border-outline-variant rounded-lg shrink-0">
+      <div className="w-full min-w-0 flex flex-col min-h-[320px] md:h-full bg-surface-container-lowest border border-outline-variant rounded-lg">
       <div className="p-compact border-b border-outline-variant bg-[#fff8e6] rounded-t-lg flex justify-between items-center">
       <div className="flex items-center">
       <span className="w-2 h-2 rounded-full bg-[#d97706] mr-compact"></span>
@@ -158,7 +158,7 @@ export function TriageBoardClinicpulseTriage({ actions }: TriageBoardClinicpulse
       </div>
       </div>
       {/* Moderate Lane */}
-      <div className="w-[320px] flex flex-col h-full bg-surface-container-lowest border border-outline-variant rounded-lg shrink-0">
+      <div className="w-full min-w-0 flex flex-col min-h-[320px] md:h-full bg-surface-container-lowest border border-outline-variant rounded-lg">
       <div className="p-compact border-b border-outline-variant bg-[#f0fdf4] rounded-t-lg flex justify-between items-center">
       <div className="flex items-center">
       <span className="w-2 h-2 rounded-full bg-[#16a34a] mr-compact"></span>
@@ -174,7 +174,7 @@ export function TriageBoardClinicpulseTriage({ actions }: TriageBoardClinicpulse
       </div>
       </div>
       {/* Low Lane */}
-      <div className="w-[320px] flex flex-col h-full bg-surface-container-lowest border border-outline-variant rounded-lg shrink-0">
+      <div className="w-full min-w-0 flex flex-col min-h-[320px] md:h-full bg-surface-container-lowest border border-outline-variant rounded-lg">
       <div className="p-compact border-b border-outline-variant bg-surface-container-low rounded-t-lg flex justify-between items-center">
       <div className="flex items-center">
       <span className="w-2 h-2 rounded-full bg-outline mr-compact"></span>
