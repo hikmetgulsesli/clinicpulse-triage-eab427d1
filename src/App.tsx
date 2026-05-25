@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useReducer } from 'react';
+import { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import {
   EmptyAndErrorRecoveryClinicpulseTriage,
   PatientEditorClinicpulseTriage,
@@ -18,6 +18,12 @@ import {
   type ClinicPulseSnapshot,
 } from './features/clinicpulse-triage/clinicpulse-triage.store';
 import { loadClinicPulseState, saveClinicPulseState } from './features/clinicpulse-triage/clinicpulse-triage.repo';
+import { cancelPatientEdit } from './features/surf-patient-editor/act_cancel_edit';
+import { savePatientRecord } from './features/surf-patient-editor/act_save_record';
+import { createPatientRecord } from './features/surf-patient-operations/act_create_record';
+import { retryLoadPatientRecords } from './features/surf-patient-operations/act_retry_load';
+import { searchPatientRecords } from './features/surf-patient-operations/act_search_records';
+import { selectPatientRecord } from './features/surf-patient-operations/act_select_record';
 import './test/bridge';
 
 const initialState = buildClinicPulseState();
@@ -26,6 +32,7 @@ const loadInitialClinicPulseState = () => loadClinicPulseState().state;
 
 export default function App() {
   const [state, dispatch] = useReducer(clinicPulseReducer, initialState, loadInitialClinicPulseState);
+  const [operationsSearch, setOperationsSearch] = useState('');
 
   useEffect(() => {
     const saved = saveClinicPulseState(state);
@@ -38,19 +45,23 @@ export default function App() {
     dispatch({ type: 'navigate', route, panel });
   }, []);
 
+  const navigatePath = useCallback((path: '/notifications' | '/history') => {
+    window.history.pushState({ clinicPulsePath: path }, '', path);
+  }, []);
+
   const commonActions = useMemo(
     () => ({
-      'add-patient-1': () => navigate('patient-editor', 'editor'),
+      'add-patient-1': () => createPatientRecord(navigate),
       'button-2-2': () => navigate('operations', 'operations'),
-      'button-3-3': () => navigate('triage-board', 'board'),
-      'button-4-4': () => navigate('empty-recovery', 'support'),
+      'button-3-3': () => navigatePath('/notifications'),
+      'button-4-4': () => navigatePath('/history'),
       'button-5-5': () => dispatch({ type: 'advance-priority', updatedAt: currentTimestamp() }),
       'operations-1': () => navigate('operations', 'operations'),
       'triage-board-2': () => navigate('triage-board', 'board'),
       'settings-3': () => navigate('triage-board', 'settings'),
       'support-4': () => navigate('empty-recovery', 'support'),
     }),
-    [navigate],
+    [navigate, navigatePath],
   );
 
   const boardActions = useMemo<Partial<Record<TriageBoardClinicpulseTriageActionId, () => void>>>(
@@ -67,7 +78,10 @@ export default function App() {
   const operationsActions = useMemo<Partial<Record<PatientOperationsClinicpulseTriageActionId, () => void>>>(
     () => ({
       ...commonActions,
-      'retry-load-5': () => dispatch({ type: 'reset-records' }),
+      'retry-load-5': () => {
+        retryLoadPatientRecords(dispatch);
+        setOperationsSearch('');
+      },
       'button-6-6': () => dispatch({ type: 'toggle-consent', updatedAt: currentTimestamp() }),
       'view-full-record-7': () => navigate('patient-editor', 'editor'),
       'assign-room-8': () => dispatch({ type: 'assign-room', updatedAt: currentTimestamp() }),
@@ -78,11 +92,23 @@ export default function App() {
   const editorActions = useMemo<Partial<Record<PatientEditorClinicpulseTriageActionId, () => void>>>(
     () => ({
       ...commonActions,
-      'save-now-6': () => navigate('triage-board', 'board'),
-      'cancel-edit-7': () => navigate('triage-board', 'board'),
-      'save-record-8': () => navigate('triage-board', 'board'),
+      'save-now-6': () => savePatientRecord(navigate),
+      'cancel-edit-7': () => cancelPatientEdit(navigate),
+      'save-record-8': () => savePatientRecord(navigate),
     }),
     [commonActions, navigate],
+  );
+
+  const operationsRecords = useMemo(
+    () => searchPatientRecords(state.records, operationsSearch),
+    [operationsSearch, state.records],
+  );
+
+  const selectOperationsRecord = useCallback(
+    (recordId: string) => {
+      selectPatientRecord(dispatch, recordId);
+    },
+    [dispatch],
   );
 
   const recoveryActions = useMemo<Partial<Record<EmptyAndErrorRecoveryClinicpulseTriageActionId, () => void>>>(
@@ -100,11 +126,47 @@ export default function App() {
   }, [state]);
 
   return (
-    <div data-setfarm-root="clinicpulse-triage" className="min-h-screen bg-slate-50 text-slate-950">
-      {state.route === 'operations' ? <PatientOperationsClinicpulseTriage actions={operationsActions} /> : null}
-      {state.route === 'patient-editor' ? <PatientEditorClinicpulseTriage actions={editorActions} /> : null}
+    <div
+      data-setfarm-root="clinicpulse-triage"
+      className="min-h-screen max-w-full overflow-x-hidden bg-slate-50 text-slate-950"
+    >
+      {state.route === 'operations' ? (
+        <PatientOperationsClinicpulseTriage
+          actions={operationsActions}
+          counts={state.counts}
+          records={operationsRecords}
+          searchQuery={operationsSearch}
+          selectedRecord={state.selectedRecord}
+          onSearchQueryChange={setOperationsSearch}
+          onSelectRecord={selectOperationsRecord}
+        />
+      ) : null}
+      {state.route === 'patient-editor' ? (
+        <PatientEditorClinicpulseTriage actions={editorActions} selectedRecord={state.selectedRecord} />
+      ) : null}
       {state.route === 'empty-recovery' ? <EmptyAndErrorRecoveryClinicpulseTriage actions={recoveryActions} /> : null}
-      {state.route === 'triage-board' ? <TriageBoardClinicpulseTriage actions={boardActions} /> : null}
+      {state.route === 'triage-board' ? (
+        <div data-mobile-board-clamp="true" className="max-w-full overflow-x-hidden [&_*]:max-w-full">
+          <style>
+            {`
+              @media (max-width: 767px) {
+                [data-mobile-board-clamp] .min-w-max {
+                  min-width: 0 !important;
+                  width: 100% !important;
+                  flex-direction: column !important;
+                  gap: 16px !important;
+                }
+
+                [data-mobile-board-clamp] .min-w-max > * {
+                  width: 100% !important;
+                  max-width: 100% !important;
+                }
+              }
+            `}
+          </style>
+          <TriageBoardClinicpulseTriage actions={boardActions} />
+        </div>
+      ) : null}
     </div>
   );
 }
