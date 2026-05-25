@@ -18,6 +18,8 @@ import {
   type ClinicPulseSnapshot,
 } from './features/clinicpulse-triage/clinicpulse-triage.store';
 import { loadClinicPulseState, saveClinicPulseState } from './features/clinicpulse-triage/clinicpulse-triage.repo';
+import { createRecoveryPatientRecord } from './features/surf-empty-and-error-recovery/act_create_record';
+import { retryLoadRecoveryRecords } from './features/surf-empty-and-error-recovery/act_retry_load';
 import './test/bridge';
 
 const initialState = buildClinicPulseState();
@@ -38,15 +40,11 @@ export default function App() {
     dispatch({ type: 'navigate', route, panel });
   }, []);
 
-  const navigateToPath = useCallback((path: '/notifications' | '/history') => {
-    window.history.pushState({}, '', path);
-  }, []);
-
   const commonActions = useMemo(
     () => ({
       'add-patient-1': () => navigate('patient-editor', 'editor'),
-      'button-2-2': () => navigateToPath('/notifications'),
-      'button-3-3': () => navigateToPath('/history'),
+      'button-2-2': () => navigate('operations', 'operations'),
+      'button-3-3': () => navigate('triage-board', 'board'),
       'button-4-4': () => navigate('empty-recovery', 'support'),
       'button-5-5': () => dispatch({ type: 'advance-priority', updatedAt: currentTimestamp() }),
       'operations-1': () => navigate('operations', 'operations'),
@@ -54,7 +52,7 @@ export default function App() {
       'settings-3': () => navigate('triage-board', 'settings'),
       'support-4': () => navigate('empty-recovery', 'support'),
     }),
-    [navigate, navigateToPath],
+    [navigate],
   );
 
   const boardActions = useMemo<Partial<Record<TriageBoardClinicpulseTriageActionId, () => void>>>(
@@ -92,9 +90,9 @@ export default function App() {
   const recoveryActions = useMemo<Partial<Record<EmptyAndErrorRecoveryClinicpulseTriageActionId, () => void>>>(
     () => ({
       ...commonActions,
-      'retry-load-6': () => dispatch({ type: 'reset-records' }),
-      'create-patient-7': () => navigate('patient-editor', 'editor'),
-      'clear-all-filters-8': () => dispatch({ type: 'reset-records' }),
+      'retry-load-6': () => retryLoadRecoveryRecords(dispatch),
+      'create-patient-7': () => createRecoveryPatientRecord(navigate),
+      'clear-all-filters-8': () => retryLoadRecoveryRecords(dispatch),
     }),
     [commonActions, navigate],
   );
