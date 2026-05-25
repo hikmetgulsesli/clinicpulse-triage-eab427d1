@@ -23,9 +23,42 @@ import './test/bridge';
 const initialState = buildClinicPulseState();
 const currentTimestamp = () => new Date().toISOString();
 const loadInitialClinicPulseState = () => loadClinicPulseState().state;
+const routeHashes: Record<ClinicPulseRoute, string> = {
+  'triage-board': '#triage-board',
+  operations: '#operations',
+  'patient-editor': '#patient-editor',
+  'empty-recovery': '#empty-recovery',
+};
+
+const readRouteFromLocation = (): ClinicPulseRoute | null => {
+  const rawRoute = new URLSearchParams(window.location.search).get('screen') ?? window.location.hash.slice(1);
+  if (
+    rawRoute === 'triage-board' ||
+    rawRoute === 'operations' ||
+    rawRoute === 'patient-editor' ||
+    rawRoute === 'empty-recovery'
+  ) {
+    return rawRoute;
+  }
+
+  return null;
+};
 
 export default function App() {
   const [state, dispatch] = useReducer(clinicPulseReducer, initialState, loadInitialClinicPulseState);
+
+  useEffect(() => {
+    const syncRouteFromLocation = () => {
+      const route = readRouteFromLocation();
+      if (route) {
+        dispatch({ type: 'navigate', route });
+      }
+    };
+
+    syncRouteFromLocation();
+    window.addEventListener('hashchange', syncRouteFromLocation);
+    return () => window.removeEventListener('hashchange', syncRouteFromLocation);
+  }, []);
 
   useEffect(() => {
     const saved = saveClinicPulseState(state);
@@ -35,6 +68,9 @@ export default function App() {
   }, [state]);
 
   const navigate = useCallback((route: ClinicPulseRoute, panel?: ClinicPulsePanel) => {
+    if (window.location.hash !== routeHashes[route]) {
+      window.history.pushState(null, '', routeHashes[route]);
+    }
     dispatch({ type: 'navigate', route, panel });
   }, []);
 
