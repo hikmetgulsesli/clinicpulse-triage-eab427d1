@@ -29,6 +29,11 @@ const routeHashes: Record<ClinicPulseRoute, string> = {
   'patient-editor': '#patient-editor',
   'empty-recovery': '#empty-recovery',
 };
+const pushPathFeedback = (path: string) => {
+  if (window.location.pathname !== path) {
+    window.history.pushState(null, '', path);
+  }
+};
 
 const readRouteFromLocation = (): ClinicPulseRoute | null => {
   const rawRoute = new URLSearchParams(window.location.search).get('screen') ?? window.location.hash.slice(1);
@@ -77,8 +82,8 @@ export default function App() {
   const commonActions = useMemo(
     () => ({
       'add-patient-1': () => navigate('patient-editor', 'editor'),
-      'button-2-2': () => navigate('operations', 'operations'),
-      'button-3-3': () => navigate('triage-board', 'board'),
+      'button-2-2': () => pushPathFeedback('/notifications'),
+      'button-3-3': () => pushPathFeedback('/history'),
       'button-4-4': () => navigate('empty-recovery', 'support'),
       'button-5-5': () => dispatch({ type: 'advance-priority', updatedAt: currentTimestamp() }),
       'operations-1': () => navigate('operations', 'operations'),
