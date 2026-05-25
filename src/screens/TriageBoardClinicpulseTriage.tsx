@@ -17,6 +17,10 @@ export interface TriageBoardClinicpulseTriageProps {
 }
 
 export function TriageBoardClinicpulseTriage({ actions }: TriageBoardClinicpulseTriageProps) {
+  const handleAssignRoom = actions?.["assign-room-5"];
+  const handleEditNote = actions?.["button-8-8"];
+  const handleCheckLabs = actions?.["check-labs-7"];
+
   return (
     <>
       {/* SideNavBar */}
@@ -115,7 +119,7 @@ export function TriageBoardClinicpulseTriage({ actions }: TriageBoardClinicpulse
       <span className="font-data-mono text-[11px] text-on-surface-variant">ID: 8492-A</span>
       </div>
       <div className="flex space-x-base mt-2 border-t border-outline-variant pt-2">
-      <button className="flex-1 text-center py-1 bg-surface-container text-on-surface font-label-bold text-[11px] rounded hover:bg-surface-container-high transition-colors" type="button" data-action-id="assign-room-5" onClick={actions?.["assign-room-5"]}>Assign Room</button>
+      <button className="flex-1 text-center py-1 bg-surface-container text-on-surface font-label-bold text-[11px] rounded hover:bg-surface-container-high transition-colors" type="button" data-action-id="assign-room-5" disabled={!handleAssignRoom} onClick={handleAssignRoom}>Assign Room</button>
       <button className="px-2 py-1 bg-surface-container text-on-surface rounded hover:bg-surface-container-high transition-colors" type="button" data-action-id="button-6-6" onClick={actions?.["button-6-6"]}><Circle className="text-[14px]" aria-hidden={true} focusable="false" /></button>
       </div>
       </div>
@@ -147,8 +151,8 @@ export function TriageBoardClinicpulseTriage({ actions }: TriageBoardClinicpulse
       <span className="font-data-mono text-[11px] text-on-surface-variant">ID: 1102-B</span>
       </div>
       <div className="flex space-x-base mt-2 border-t border-outline-variant pt-2">
-      <button className="flex-1 text-center py-1 bg-surface-container text-on-surface font-label-bold text-[11px] rounded hover:bg-surface-container-high transition-colors" type="button" data-action-id="check-labs-7" onClick={actions?.["check-labs-7"]}>Check Labs</button>
-      <button className="px-2 py-1 bg-surface-container text-on-surface rounded hover:bg-surface-container-high transition-colors" type="button" data-action-id="button-8-8" onClick={actions?.["button-8-8"]}><Circle className="text-[14px]" aria-hidden={true} focusable="false" /></button>
+      <button className="flex-1 text-center py-1 bg-surface-container text-on-surface font-label-bold text-[11px] rounded hover:bg-surface-container-high transition-colors" type="button" data-action-id="check-labs-7" disabled={!handleCheckLabs} onClick={handleCheckLabs}>Check Labs</button>
+      <button className="px-2 py-1 bg-surface-container text-on-surface rounded hover:bg-surface-container-high transition-colors" type="button" data-action-id="button-8-8" aria-label="edit_note" title="edit_note" disabled={!handleEditNote} onClick={handleEditNote}><Circle className="text-[14px]" aria-hidden={true} focusable="false" /></button>
       </div>
       </div>
       </div>
