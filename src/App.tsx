@@ -45,19 +45,23 @@ export default function App() {
     dispatch({ type: 'navigate', route, panel });
   }, []);
 
+  const navigatePath = useCallback((path: '/notifications' | '/history') => {
+    window.history.pushState({ clinicPulsePath: path }, '', path);
+  }, []);
+
   const commonActions = useMemo(
     () => ({
       'add-patient-1': () => createPatientRecord(navigate),
       'button-2-2': () => navigate('operations', 'operations'),
-      'button-3-3': () => navigate('triage-board', 'board'),
-      'button-4-4': () => navigate('empty-recovery', 'support'),
+      'button-3-3': () => navigatePath('/notifications'),
+      'button-4-4': () => navigatePath('/history'),
       'button-5-5': () => dispatch({ type: 'advance-priority', updatedAt: currentTimestamp() }),
       'operations-1': () => navigate('operations', 'operations'),
       'triage-board-2': () => navigate('triage-board', 'board'),
       'settings-3': () => navigate('triage-board', 'settings'),
       'support-4': () => navigate('empty-recovery', 'support'),
     }),
-    [navigate],
+    [navigate, navigatePath],
   );
 
   const boardActions = useMemo<Partial<Record<TriageBoardClinicpulseTriageActionId, () => void>>>(
