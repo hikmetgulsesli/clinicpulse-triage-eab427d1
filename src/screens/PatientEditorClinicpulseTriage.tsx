@@ -8,15 +8,19 @@
 // 4. Replace placeholder data with props/state
 
 import { Circle, CircleUserRound, Info, Menu, Plus, Save, Settings } from "lucide-react";
+import type { ClinicPulsePatientRecord } from "../features/clinicpulse-triage/clinicpulse-triage.store";
 
 
 export type PatientEditorClinicpulseTriageActionId = "add-patient-1" | "button-2-2" | "button-3-3" | "button-4-4" | "button-5-5" | "save-now-6" | "cancel-edit-7" | "save-record-8" | "operations-1" | "triage-board-2" | "settings-3" | "support-4";
 
 export interface PatientEditorClinicpulseTriageProps {
   actions?: Partial<Record<PatientEditorClinicpulseTriageActionId, () => void>>;
+  selectedRecord?: ClinicPulsePatientRecord | null;
 }
 
-export function PatientEditorClinicpulseTriage({ actions }: PatientEditorClinicpulseTriageProps) {
+export function PatientEditorClinicpulseTriage({ actions, selectedRecord }: PatientEditorClinicpulseTriageProps) {
+  const fullName = selectedRecord?.name ?? "";
+  const priority = selectedRecord?.acuity ?? "urgent";
   return (
     <>
       {/* SideNavBar */}
@@ -105,7 +109,7 @@ export function PatientEditorClinicpulseTriage({ actions }: PatientEditorClinicp
       <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Create or edit patient intake information.</p>
       </div>
       </div>
-      <form className="space-y-gutter bg-surface-container-lowest p-margin-desktop rounded-lg border border-outline-variant shadow-sm">
+      <form className="space-y-gutter bg-surface-container-lowest p-margin-desktop rounded-lg border border-outline-variant shadow-sm" onSubmit={(event) => { event.preventDefault(); actions?.["save-record-8"]?.(); }}>
       {/* Form Section: Identity */}
       <div className="border-b border-surface-container pb-gutter">
       <h3 className="font-label-bold text-label-bold text-on-surface uppercase tracking-wider mb-compact">Identity</h3>
@@ -116,7 +120,7 @@ export function PatientEditorClinicpulseTriage({ actions }: PatientEditorClinicp
                                           Full Name <span className="text-error">*</span>
       </label>
       <div className="relative">
-      <input className="w-full bg-surface border-error text-on-surface font-body-md text-body-md rounded-DEFAULT px-compact py-2 focus:ring-1 focus:ring-error focus:border-error transition-colors" id="fullName" placeholder="e.g. Jane Doe" type="text" defaultValue="" />
+      <input className="w-full bg-surface border-error text-on-surface font-body-md text-body-md rounded-DEFAULT px-compact py-2 focus:ring-1 focus:ring-error focus:border-error transition-colors" id="fullName" placeholder="e.g. Jane Doe" type="text" defaultValue={fullName} />
       <div className="absolute inset-y-0 right-0 pr-compact flex items-center pointer-events-none">
       <Circle className="text-error text-[18px]" aria-hidden={true} focusable="false" />
       </div>
@@ -146,19 +150,19 @@ export function PatientEditorClinicpulseTriage({ actions }: PatientEditorClinicp
       </label>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-compact">
       <label className="cursor-pointer">
-      <input className="peer sr-only" name="priority" type="radio" defaultValue="critical" />
+      <input className="peer sr-only" name="priority" type="radio" defaultValue="critical" defaultChecked={priority === "emergent"} />
       <div className="rounded-DEFAULT border border-outline-variant py-2 px-compact text-center font-label-md text-label-md text-on-surface-variant peer-checked:bg-error peer-checked:text-on-error peer-checked:border-error transition-colors hover:bg-surface-container-high">
                                               Critical (1)
                                           </div>
       </label>
       <label className="cursor-pointer">
-      <input defaultChecked={true} className="peer sr-only" name="priority" type="radio" defaultValue="urgent" />
+      <input defaultChecked={priority === "urgent"} className="peer sr-only" name="priority" type="radio" defaultValue="urgent" />
       <div className="rounded-DEFAULT border border-outline-variant py-2 px-compact text-center font-label-md text-label-md text-on-surface-variant peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary transition-colors hover:bg-surface-container-high">
                                               Urgent (2)
                                           </div>
       </label>
       <label className="cursor-pointer">
-      <input className="peer sr-only" name="priority" type="radio" defaultValue="moderate" />
+      <input className="peer sr-only" name="priority" type="radio" defaultValue="moderate" defaultChecked={priority === "standard"} />
       <div className="rounded-DEFAULT border border-outline-variant py-2 px-compact text-center font-label-md text-label-md text-on-surface-variant peer-checked:bg-surface-container-highest peer-checked:text-on-surface transition-colors hover:bg-surface-container-high">
                                               Moderate (3)
                                           </div>
@@ -176,7 +180,7 @@ export function PatientEditorClinicpulseTriage({ actions }: PatientEditorClinicp
       <label className="block font-label-md text-label-md text-on-surface mb-1" htmlFor="complaint">
                                       Chief Complaint <span className="text-error">*</span>
       </label>
-      <textarea className="w-full bg-surface border-outline-variant text-on-surface font-body-md text-body-md rounded-DEFAULT px-compact py-2 focus:ring-1 focus:ring-primary focus:border-primary transition-colors resize-none" id="complaint" placeholder="Describe the primary reason for visit..." rows={4}></textarea>
+      <textarea className="w-full bg-surface border-outline-variant text-on-surface font-body-md text-body-md rounded-DEFAULT px-compact py-2 focus:ring-1 focus:ring-primary focus:border-primary transition-colors resize-none" id="complaint" placeholder="Describe the primary reason for visit..." rows={4} defaultValue={selectedRecord?.chiefComplaint ?? ""}></textarea>
       <div className="flex justify-between mt-1">
       <span className="font-body-sm text-body-sm text-on-surface-variant">Be concise and objective.</span>
       <span className="font-data-mono text-data-mono text-on-surface-variant">0/250</span>
@@ -189,7 +193,7 @@ export function PatientEditorClinicpulseTriage({ actions }: PatientEditorClinicp
       {/* Consent Status */}
       <div className="flex items-start gap-compact">
       <div className="flex items-center h-5 mt-1">
-      <input className="h-4 w-4 rounded border-outline-variant text-primary focus:ring-primary focus:ring-2 bg-surface cursor-pointer" id="consent" type="checkbox" />
+      <input className="h-4 w-4 rounded border-outline-variant text-primary focus:ring-primary focus:ring-2 bg-surface cursor-pointer" id="consent" type="checkbox" defaultChecked={selectedRecord ? !selectedRecord.consentMissing : false} />
       </div>
       <div className="text-sm">
       <label className="font-label-md text-label-md text-on-surface cursor-pointer" htmlFor="consent">Consent to Treat Obtained</label>
@@ -202,7 +206,7 @@ export function PatientEditorClinicpulseTriage({ actions }: PatientEditorClinicp
       <button className="px-gutter py-2 rounded-lg font-label-bold text-label-bold text-on-surface bg-surface border border-outline-variant hover:bg-surface-container-highest transition-colors w-full md:w-auto" type="button" data-action-id="cancel-edit-7" onClick={actions?.["cancel-edit-7"]}>
                                   Cancel Edit
                               </button>
-      <button className="px-gutter py-2 rounded-lg font-label-bold text-label-bold text-on-primary bg-primary hover:opacity-90 transition-opacity w-full md:w-auto flex items-center justify-center gap-compact" type="submit" data-action-id="save-record-8" onClick={actions?.["save-record-8"]}>
+      <button className="px-gutter py-2 rounded-lg font-label-bold text-label-bold text-on-primary bg-primary hover:opacity-90 transition-opacity w-full md:w-auto flex items-center justify-center gap-compact" type="button" data-action-id="save-record-8" onClick={actions?.["save-record-8"]}>
       <Save className="text-[18px]" aria-hidden={true} focusable="false" />
                                   Save Record
                               </button>
