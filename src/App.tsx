@@ -126,7 +126,10 @@ export default function App() {
   }, [state]);
 
   return (
-    <div data-setfarm-root="clinicpulse-triage" className="min-h-screen bg-slate-50 text-slate-950">
+    <div
+      data-setfarm-root="clinicpulse-triage"
+      className="min-h-screen max-w-full overflow-x-hidden bg-slate-50 text-slate-950"
+    >
       {state.route === 'operations' ? (
         <PatientOperationsClinicpulseTriage
           actions={operationsActions}
@@ -142,7 +145,28 @@ export default function App() {
         <PatientEditorClinicpulseTriage actions={editorActions} selectedRecord={state.selectedRecord} />
       ) : null}
       {state.route === 'empty-recovery' ? <EmptyAndErrorRecoveryClinicpulseTriage actions={recoveryActions} /> : null}
-      {state.route === 'triage-board' ? <TriageBoardClinicpulseTriage actions={boardActions} /> : null}
+      {state.route === 'triage-board' ? (
+        <div data-mobile-board-clamp="true" className="max-w-full overflow-x-hidden [&_*]:max-w-full">
+          <style>
+            {`
+              @media (max-width: 767px) {
+                [data-mobile-board-clamp] .min-w-max {
+                  min-width: 0 !important;
+                  width: 100% !important;
+                  flex-direction: column !important;
+                  gap: 16px !important;
+                }
+
+                [data-mobile-board-clamp] .min-w-max > * {
+                  width: 100% !important;
+                  max-width: 100% !important;
+                }
+              }
+            `}
+          </style>
+          <TriageBoardClinicpulseTriage actions={boardActions} />
+        </div>
+      ) : null}
     </div>
   );
 }
