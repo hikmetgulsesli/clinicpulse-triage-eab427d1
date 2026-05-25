@@ -38,11 +38,15 @@ export default function App() {
     dispatch({ type: 'navigate', route, panel });
   }, []);
 
+  const navigateToPath = useCallback((path: '/notifications' | '/history') => {
+    window.history.pushState({}, '', path);
+  }, []);
+
   const commonActions = useMemo(
     () => ({
       'add-patient-1': () => navigate('patient-editor', 'editor'),
-      'button-2-2': () => navigate('operations', 'operations'),
-      'button-3-3': () => navigate('triage-board', 'board'),
+      'button-2-2': () => navigateToPath('/notifications'),
+      'button-3-3': () => navigateToPath('/history'),
       'button-4-4': () => navigate('empty-recovery', 'support'),
       'button-5-5': () => dispatch({ type: 'advance-priority', updatedAt: currentTimestamp() }),
       'operations-1': () => navigate('operations', 'operations'),
@@ -50,7 +54,7 @@ export default function App() {
       'settings-3': () => navigate('triage-board', 'settings'),
       'support-4': () => navigate('empty-recovery', 'support'),
     }),
-    [navigate],
+    [navigate, navigateToPath],
   );
 
   const boardActions = useMemo<Partial<Record<TriageBoardClinicpulseTriageActionId, () => void>>>(
@@ -100,7 +104,7 @@ export default function App() {
   }, [state]);
 
   return (
-    <div data-setfarm-root="clinicpulse-triage" className="flex min-h-screen bg-slate-50 text-slate-950">
+    <div data-setfarm-root="clinicpulse-triage" className="min-h-screen bg-slate-50 text-slate-950">
       {state.route === 'operations' ? <PatientOperationsClinicpulseTriage actions={operationsActions} /> : null}
       {state.route === 'patient-editor' ? <PatientEditorClinicpulseTriage actions={editorActions} /> : null}
       {state.route === 'empty-recovery' ? <EmptyAndErrorRecoveryClinicpulseTriage actions={recoveryActions} /> : null}
