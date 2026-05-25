@@ -44,6 +44,8 @@ export function loadClinicPulseState(storage: Storage | undefined = getStorage()
     storage.removeItem(CLINICPULSE_STORAGE_KEY);
     return {
       state: buildClinicPulseState({
+        route: 'empty-recovery',
+        activePanel: 'support',
         storageStatus: 'recoverable-error',
         lastError: 'Saved triage data was corrupted and has been reset.',
       }),

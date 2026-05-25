@@ -94,6 +94,7 @@ function normalizeClinicPulseRecord(record: ClinicPulsePatientRecord): ClinicPul
 export function panelForRoute(route: ClinicPulseRoute): ClinicPulsePanel {
   if (route === 'operations') return 'operations';
   if (route === 'patient-editor') return 'editor';
+  if (route === 'empty-recovery') return 'support';
   return 'board';
 }
 

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useReducer } from 'react';
+import { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import {
   EmptyAndErrorRecoveryClinicpulseTriage,
   PatientEditorClinicpulseTriage,
@@ -18,14 +18,27 @@ import {
   type ClinicPulseSnapshot,
 } from './features/clinicpulse-triage/clinicpulse-triage.store';
 import { loadClinicPulseState, saveClinicPulseState } from './features/clinicpulse-triage/clinicpulse-triage.repo';
+import { createRecoveryPatientRecord } from './features/surf-empty-and-error-recovery/act_create_record';
+import { retryLoadRecoveryRecords } from './features/surf-empty-and-error-recovery/act_retry_load';
+import { cancelPatientEdit } from './features/surf-patient-editor/act_cancel_edit';
+import { savePatientRecord } from './features/surf-patient-editor/act_save_record';
+import { retryLoadPatientRecords } from './features/surf-patient-operations/act_retry_load';
+import { searchPatientRecords } from './features/surf-patient-operations/act_search_records';
+import { selectPatientRecord } from './features/surf-patient-operations/act_select_record';
 import './test/bridge';
 
 const initialState = buildClinicPulseState();
 const currentTimestamp = () => new Date().toISOString();
 const loadInitialClinicPulseState = () => loadClinicPulseState().state;
+const navigateToPath = (path: string) => {
+  if (globalThis.window?.location.pathname !== path) {
+    globalThis.window?.history.pushState(null, '', path);
+  }
+};
 
 export default function App() {
   const [state, dispatch] = useReducer(clinicPulseReducer, initialState, loadInitialClinicPulseState);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const saved = saveClinicPulseState(state);
@@ -36,10 +49,6 @@ export default function App() {
 
   const navigate = useCallback((route: ClinicPulseRoute, panel?: ClinicPulsePanel) => {
     dispatch({ type: 'navigate', route, panel });
-  }, []);
-
-  const navigateToPath = useCallback((path: '/notifications' | '/history') => {
-    window.history.pushState({}, '', path);
   }, []);
 
   const commonActions = useMemo(
@@ -54,7 +63,7 @@ export default function App() {
       'settings-3': () => navigate('triage-board', 'settings'),
       'support-4': () => navigate('empty-recovery', 'support'),
     }),
-    [navigate, navigateToPath],
+    [navigate],
   );
 
   const boardActions = useMemo<Partial<Record<TriageBoardClinicpulseTriageActionId, () => void>>>(
@@ -71,7 +80,7 @@ export default function App() {
   const operationsActions = useMemo<Partial<Record<PatientOperationsClinicpulseTriageActionId, () => void>>>(
     () => ({
       ...commonActions,
-      'retry-load-5': () => dispatch({ type: 'reset-records' }),
+      'retry-load-5': () => retryLoadPatientRecords(dispatch),
       'button-6-6': () => dispatch({ type: 'toggle-consent', updatedAt: currentTimestamp() }),
       'view-full-record-7': () => navigate('patient-editor', 'editor'),
       'assign-room-8': () => dispatch({ type: 'assign-room', updatedAt: currentTimestamp() }),
@@ -82,9 +91,9 @@ export default function App() {
   const editorActions = useMemo<Partial<Record<PatientEditorClinicpulseTriageActionId, () => void>>>(
     () => ({
       ...commonActions,
-      'save-now-6': () => navigate('triage-board', 'board'),
-      'cancel-edit-7': () => navigate('triage-board', 'board'),
-      'save-record-8': () => navigate('triage-board', 'board'),
+      'save-now-6': () => savePatientRecord(navigate),
+      'cancel-edit-7': () => cancelPatientEdit(navigate),
+      'save-record-8': () => savePatientRecord(navigate),
     }),
     [commonActions, navigate],
   );
@@ -92,12 +101,14 @@ export default function App() {
   const recoveryActions = useMemo<Partial<Record<EmptyAndErrorRecoveryClinicpulseTriageActionId, () => void>>>(
     () => ({
       ...commonActions,
-      'retry-load-6': () => dispatch({ type: 'reset-records' }),
-      'create-patient-7': () => navigate('patient-editor', 'editor'),
-      'clear-all-filters-8': () => dispatch({ type: 'reset-records' }),
+      'retry-load-6': () => retryLoadRecoveryRecords(dispatch),
+      'create-patient-7': () => createRecoveryPatientRecord(navigate),
+      'clear-all-filters-8': () => retryLoadRecoveryRecords(dispatch),
     }),
     [commonActions, navigate],
   );
+
+  const visibleRecords = useMemo(() => searchPatientRecords(state.records, searchQuery), [state.records, searchQuery]);
 
   useEffect(() => {
     window.app = toClinicPulseSnapshot(state);
@@ -108,8 +119,20 @@ export default function App() {
       data-setfarm-root="clinicpulse-triage"
       className="flex min-h-screen w-full bg-[var(--color-background)] text-[var(--color-on-background)]"
     >
-      {state.route === 'operations' ? <PatientOperationsClinicpulseTriage actions={operationsActions} /> : null}
-      {state.route === 'patient-editor' ? <PatientEditorClinicpulseTriage actions={editorActions} /> : null}
+      {state.route === 'operations' ? (
+        <PatientOperationsClinicpulseTriage
+          actions={operationsActions}
+          counts={state.counts}
+          records={visibleRecords}
+          searchQuery={searchQuery}
+          selectedRecord={state.selectedRecord}
+          onSearchQueryChange={setSearchQuery}
+          onSelectRecord={(recordId) => selectPatientRecord(dispatch, recordId)}
+        />
+      ) : null}
+      {state.route === 'patient-editor' ? (
+        <PatientEditorClinicpulseTriage actions={editorActions} selectedRecord={state.selectedRecord} />
+      ) : null}
       {state.route === 'empty-recovery' ? <EmptyAndErrorRecoveryClinicpulseTriage actions={recoveryActions} /> : null}
       {state.route === 'triage-board' ? <TriageBoardClinicpulseTriage actions={boardActions} /> : null}
     </div>
