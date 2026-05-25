@@ -63,7 +63,7 @@ export function PatientOperationsClinicpulseTriage({
   return (
     <>
       {/* SideNavBar */}
-      <aside className="fixed left-0 top-0 h-full w-[240px] z-30 bg-surface-container-low border-r border-outline-variant flex flex-col py-default px-compact">
+      <aside className="hidden md:fixed md:left-0 md:top-0 md:h-full md:w-[240px] md:z-30 bg-surface-container-low border-r border-outline-variant md:flex flex-col py-default px-compact">
       {/* Header */}
       <div className="mb-default px-compact">
       <h1 className="font-headline-md text-headline-md font-bold text-on-surface">ClinicPulse</h1>
@@ -102,13 +102,13 @@ export function PatientOperationsClinicpulseTriage({
       </div>
       </aside>
       {/* Main Wrapper */}
-      <div className="flex-1 flex flex-col ml-[240px] relative w-full h-full">
+      <div className="flex-1 flex flex-col relative w-full md:w-[calc(100%-240px)] md:ml-[240px] min-w-0 h-full">
       {/* TopNavBar */}
-      <header className="fixed top-0 w-[calc(100%-240px)] z-20 bg-surface border-b border-outline-variant flex justify-between items-center h-12 px-margin-desktop transition-colors duration-150">
-      <div className="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-margin-desktop w-full max-w-xl">
+      <header className="fixed left-0 md:left-[240px] top-0 w-full md:w-[calc(100%-240px)] z-20 bg-surface border-b border-outline-variant flex justify-between items-center h-auto min-h-12 px-compact sm:px-margin-desktop py-compact sm:py-0 gap-compact transition-colors duration-150">
+      <div className="font-headline-sm text-headline-sm font-bold text-on-surface flex flex-col sm:flex-row sm:items-center gap-compact sm:gap-margin-desktop w-full max-w-xl min-w-0">
                       ClinicPulse Triage
                       {/* Search Bar (on_left) */}
-      <div className="relative flex-1 ml-gutter">
+      <div className="relative w-full sm:flex-1 sm:ml-gutter min-w-0">
       <Search  style={{fontSize: "16px"}} className="absolute left-compact top-1/2 -translate-y-1/2 text-on-surface-variant" aria-hidden={true} focusable="false" />
       <input className="w-full bg-surface-container-low border border-outline-variant text-on-surface font-body-sm text-body-sm rounded pl-[32px] pr-compact py-[4px] focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-shadow" placeholder="Search patients, IDs..." type="text" value={searchQuery} onChange={(event) => onSearchQueryChange?.(event.target.value)} />
       </div>
@@ -126,10 +126,10 @@ export function PatientOperationsClinicpulseTriage({
       </div>
       </header>
       {/* Main Content Area */}
-      <main className="flex-1 mt-12 p-margin-desktop overflow-y-auto overflow-x-hidden flex flex-col gap-margin-desktop relative">
+      <main className="flex-1 mt-[88px] sm:mt-12 p-compact sm:p-margin-desktop overflow-y-auto overflow-x-hidden flex flex-col gap-margin-desktop relative min-w-0">
       {/* Header & Metrics */}
       <section className="flex flex-col gap-gutter">
-      <div className="flex justify-between items-end">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-compact">
       <h2 className="font-headline-md text-headline-md text-on-surface">Patient Operations</h2>
       <div className="flex gap-compact text-on-surface-variant">
       <span className="font-body-sm text-body-sm flex items-center gap-base">
@@ -157,8 +157,8 @@ export function PatientOperationsClinicpulseTriage({
       </div>
       </section>
       {/* Filters & Actions */}
-      <section className="flex justify-between items-center bg-surface p-compact border border-outline-variant rounded">
-      <div className="flex gap-compact">
+      <section className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-compact bg-surface p-compact border border-outline-variant rounded">
+      <div className="flex flex-col sm:flex-row gap-compact min-w-0">
       {/* Quiet Input Styling for Filters */}
       <select className="bg-transparent border-b border-outline-variant pb-1 font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-primary cursor-pointer pr-6">
       <option>All Priorities</option>
@@ -191,10 +191,10 @@ export function PatientOperationsClinicpulseTriage({
       <thead className="bg-surface-container-low border-b border-outline-variant">
       <tr>
       <th className="py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">Patient Name</th>
-      <th className="py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">ID</th>
+      <th className="hidden sm:table-cell py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">ID</th>
       <th className="py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">Triage Level</th>
-      <th className="py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">Wait Time</th>
-      <th className="py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">Room Status</th>
+      <th className="hidden sm:table-cell py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">Wait Time</th>
+      <th className="hidden sm:table-cell py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold">Room Status</th>
       <th className="py-compact px-default font-label-md text-label-md text-on-surface-variant font-semibold text-center">Consent</th>
       </tr>
       </thead>
@@ -202,12 +202,12 @@ export function PatientOperationsClinicpulseTriage({
       {records.map((record) => (
       <tr key={record.id} className={`h-[48px] hover:bg-surface-container-low transition-colors cursor-pointer ${activeRecord?.id === record.id ? "bg-primary-fixed hover:bg-primary-fixed-dim" : ""}`} onClick={() => onSelectRecord?.(record.id)}>
       <td className="px-default font-medium">{record.name}</td>
-      <td className="px-default font-data-mono text-data-mono text-on-surface-variant">{record.id}</td>
+      <td className="hidden sm:table-cell px-default font-data-mono text-data-mono text-on-surface-variant">{record.id}</td>
       <td className="px-default">
       <span className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold uppercase tracking-wide ${acuityStyles[record.acuity]}`}>{formatAcuity(record.acuity)}</span>
       </td>
-      <td className="px-default font-data-mono text-data-mono">{formatWaitTime(record.updatedAt)}</td>
-      <td className="px-default">
+      <td className="hidden sm:table-cell px-default font-data-mono text-data-mono">{formatWaitTime(record.updatedAt)}</td>
+      <td className="hidden sm:table-cell px-default">
       <span className="inline-flex items-center gap-1 border border-outline-variant rounded px-2 py-0.5 text-[11px] text-on-surface-variant">
       <span className={`w-2 h-2 rounded-full ${record.status === "waiting" ? "bg-error" : record.status === "roomed" ? "bg-secondary" : "bg-primary"}`}></span> {formatRoomStatus(record)}
                                           </span>
@@ -223,11 +223,11 @@ export function PatientOperationsClinicpulseTriage({
       </section>
       </main>
       {/* Backdrop for Drawer */}
-      <div aria-hidden={true} className="fixed inset-0 bg-inverse-surface/10 backdrop-blur-[2px] z-30 ml-[240px]"></div>
+      <div aria-hidden={true} className="fixed inset-0 bg-inverse-surface/10 backdrop-blur-[2px] z-30 md:ml-[240px]"></div>
       {/* Side Drawer (Patient Details) */}
-      <aside className="fixed right-0 top-0 h-screen w-[480px] bg-surface border-l border-outline-variant shadow-[-4px_0_12px_rgba(0,0,0,0.05)] z-40 flex flex-col transform translate-x-0 transition-transform duration-300">
+      <aside className="fixed inset-x-0 bottom-0 top-auto h-[62vh] w-full sm:left-auto sm:right-0 sm:top-0 sm:bottom-auto sm:h-screen sm:w-[min(480px,100vw)] md:w-[480px] max-w-full bg-surface border-l border-outline-variant shadow-[-4px_0_12px_rgba(0,0,0,0.05)] z-40 flex flex-col transform translate-x-0 transition-transform duration-300">
       {/* Drawer Header */}
-      <div className="p-default border-b border-outline-variant flex justify-between items-start bg-surface-container-lowest">
+      <div className="p-default border-b border-outline-variant flex justify-between items-start gap-compact bg-surface-container-lowest">
       <div>
       <div className="flex items-center gap-compact mb-1">
       <h3 className="font-headline-sm text-headline-sm font-bold text-on-surface">{activeRecord?.name ?? "No patient selected"}</h3>
@@ -302,7 +302,7 @@ export function PatientOperationsClinicpulseTriage({
       </section>
       </div>
       {/* Drawer Footer / Actions */}
-      <div className="p-default border-t border-outline-variant bg-surface flex justify-end gap-compact">
+      <div className="p-default border-t border-outline-variant bg-surface flex flex-wrap justify-end gap-compact">
       <button className="px-default py-compact font-label-md text-label-md border border-outline-variant text-on-surface rounded hover:bg-surface-container-low transition-colors" type="button" data-action-id="view-full-record-7" onClick={actions?.["view-full-record-7"]}>
                           View Full Record
                       </button>
