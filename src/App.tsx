@@ -23,47 +23,9 @@ import './test/bridge';
 const initialState = buildClinicPulseState();
 const currentTimestamp = () => new Date().toISOString();
 const loadInitialClinicPulseState = () => loadClinicPulseState().state;
-const routeHashes: Record<ClinicPulseRoute, string> = {
-  'triage-board': '#triage-board',
-  operations: '#operations',
-  'patient-editor': '#patient-editor',
-  'empty-recovery': '#empty-recovery',
-};
-const pushPathFeedback = (path: string) => {
-  if (window.location.pathname !== path) {
-    window.history.pushState(null, '', path);
-  }
-};
-
-const readRouteFromLocation = (): ClinicPulseRoute | null => {
-  const rawRoute = new URLSearchParams(window.location.search).get('screen') ?? window.location.hash.slice(1);
-  if (
-    rawRoute === 'triage-board' ||
-    rawRoute === 'operations' ||
-    rawRoute === 'patient-editor' ||
-    rawRoute === 'empty-recovery'
-  ) {
-    return rawRoute;
-  }
-
-  return null;
-};
 
 export default function App() {
   const [state, dispatch] = useReducer(clinicPulseReducer, initialState, loadInitialClinicPulseState);
-
-  useEffect(() => {
-    const syncRouteFromLocation = () => {
-      const route = readRouteFromLocation();
-      if (route) {
-        dispatch({ type: 'navigate', route });
-      }
-    };
-
-    syncRouteFromLocation();
-    window.addEventListener('hashchange', syncRouteFromLocation);
-    return () => window.removeEventListener('hashchange', syncRouteFromLocation);
-  }, []);
 
   useEffect(() => {
     const saved = saveClinicPulseState(state);
@@ -73,17 +35,14 @@ export default function App() {
   }, [state]);
 
   const navigate = useCallback((route: ClinicPulseRoute, panel?: ClinicPulsePanel) => {
-    if (window.location.hash !== routeHashes[route]) {
-      window.history.pushState(null, '', routeHashes[route]);
-    }
     dispatch({ type: 'navigate', route, panel });
   }, []);
 
   const commonActions = useMemo(
     () => ({
       'add-patient-1': () => navigate('patient-editor', 'editor'),
-      'button-2-2': () => pushPathFeedback('/notifications'),
-      'button-3-3': () => pushPathFeedback('/history'),
+      'button-2-2': () => navigate('operations', 'operations'),
+      'button-3-3': () => navigate('triage-board', 'board'),
       'button-4-4': () => navigate('empty-recovery', 'support'),
       'button-5-5': () => dispatch({ type: 'advance-priority', updatedAt: currentTimestamp() }),
       'operations-1': () => navigate('operations', 'operations'),
@@ -141,7 +100,7 @@ export default function App() {
   }, [state]);
 
   return (
-    <div data-setfarm-root="clinicpulse-triage" className="min-h-screen bg-slate-50 text-slate-950">
+    <div data-setfarm-root="clinicpulse-triage" className="flex min-h-screen bg-slate-50 text-slate-950">
       {state.route === 'operations' ? <PatientOperationsClinicpulseTriage actions={operationsActions} /> : null}
       {state.route === 'patient-editor' ? <PatientEditorClinicpulseTriage actions={editorActions} /> : null}
       {state.route === 'empty-recovery' ? <EmptyAndErrorRecoveryClinicpulseTriage actions={recoveryActions} /> : null}
